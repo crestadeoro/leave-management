@@ -19,12 +19,12 @@ class EmployeeController extends Controller
 
     public function indexEmployee()
     {
-		$division = Division::all();
-		$position = Position::all();
+        $Division = $this->getDivision();
+        $Position = $this->getPosition();
 		
     	return view('employee.add-employee', [
-			'Division' => $division,
-			'Position' => $position
+			'Division' => $Division,
+			'Position' => $Position
 		]);
     }
 
@@ -72,6 +72,7 @@ class EmployeeController extends Controller
 								->join('divisions', 'employees.id', '=', 'divisions.id')
 								->join('positions', 'employees.id', '=', 'positions.id')
 								->select(
+                                    'employees.id',
                                     'employees.employee_id',
                                     'employees.firstname',
                                     'employees.middlename',
@@ -87,5 +88,74 @@ class EmployeeController extends Controller
     	return view('employee/list-employee', [
     		'EmployeeDetail' => $EmployeeDetail
     	]);       
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | View Employee Detail Page
+    |--------------------------------------------------------------------------
+    */
+
+    public function viewEmployee(Employee $id)
+    {
+        $Employee = $this->getEmployeeDetail($id->id);
+        
+        return view('employee/view-employee', [
+            'Employee' => $Employee
+        ]);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fetch Employee Detail From Database
+    |--------------------------------------------------------------------------
+    */
+    
+    public function getEmployeeDetail($id)
+    {
+		$Employee = DB::table('employees')
+								->join('divisions', 'employees.id', '=', 'divisions.id')
+								->join('positions', 'employees.id', '=', 'positions.id')
+								->select(
+                                    'employees.id',
+                                    'employees.employee_id',
+                                    'employees.firstname',
+                                    'employees.middlename',
+                                    'employees.lastname',
+                                    'employees.birthday',
+                                    'employees.date_hired',
+                                    'employees.status',
+                                    'divisions.division',
+                                    'positions.position'
+								)
+                                ->first();
+                                
+        return $Employee;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fetch Division From Database
+    |--------------------------------------------------------------------------
+    */
+
+    public function getDivision()
+    {
+        $Division = Division::all();
+
+        return $Division;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fetch Position From Database
+    |--------------------------------------------------------------------------
+    */
+
+    public function getPosition()
+    {
+        $Position = Position::all();
+
+        return $Position;
     }
 }

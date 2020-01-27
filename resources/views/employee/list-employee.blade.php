@@ -35,6 +35,7 @@
                                     <th>Division/Project</th>
 									<th>Position</th>
 									<th>Status</th>
+									<th>Action</th>
             					</tr>
             				</thead>
             				<tbody>
@@ -47,6 +48,7 @@
                                         <td>{{ strtoupper($EmployeeDetails->division) }}</td>
 										<td>{{ strtoupper($EmployeeDetails->position) }}</td>
 										<td>{{ strtoupper($EmployeeDetails->status) }}</td>
+										<td><a href="/employee/view-employee/{{ $EmployeeDetails->id }}" class="btn btn-success btn-sm btn-circle"><i class="fas fa-eye"></i></i></a></td>
                                     </tr>
                                 @endforeach
             				</tbody>
