@@ -1,0 +1,33 @@
+body {
+  background: url("/image/login-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card {
+  margin: 25% auto;
+  border-radius: 25px;
+  border-width: 2px;
+}
+
+h3 {
+  font-family: Nunito;
+  font-weight: bold;
+}
+
+h5 {
+  font-family: Nunito;
+  font-weight: bold;
+}
+
+#username {
+  border-radius: 25px;
+}
+
+#password {
+  border-radius: 25px;
+}
+
+.login-btn {
+  border-radius: 25px;
+}
