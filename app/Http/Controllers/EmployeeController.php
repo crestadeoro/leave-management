@@ -43,7 +43,8 @@ class EmployeeController extends Controller
             'birthday' 		    => 	'required',
             'date_hired' 		=> 	'required',
             'division' 		    => 	'required',
-            'position' 		    => 	'required'		
+            'position' 		    => 	'required',
+            'status'            =>  'required'
         ]);
         
     	$data = Employee::create(request([
@@ -54,7 +55,8 @@ class EmployeeController extends Controller
             'birthday',
             'date_hired',
             'division',
-            'position'
+            'position',
+            'status'
         ]));
         
         return redirect()->action('EmployeeController@indexEmployee')->with('success', 'New Employee successfully saved!');
@@ -69,8 +71,8 @@ class EmployeeController extends Controller
     public function listEmployee()
     {
 		$EmployeeDetail = DB::table('employees')
-								->join('divisions', 'employees.id', '=', 'divisions.id')
-								->join('positions', 'employees.id', '=', 'positions.id')
+								->join('divisions', 'employees.division', '=', 'divisions.id')
+								->join('positions', 'employees.position', '=', 'positions.id')
 								->select(
                                     'employees.id',
                                     'employees.employee_id',
@@ -87,7 +89,7 @@ class EmployeeController extends Controller
 		
     	return view('employee/list-employee', [
     		'EmployeeDetail' => $EmployeeDetail
-    	]);       
+    	]);    
     }
 
     /*
@@ -107,6 +109,59 @@ class EmployeeController extends Controller
 
     /*
     |--------------------------------------------------------------------------
+    | Edit Employee Page
+    |--------------------------------------------------------------------------
+    */
+
+    public function editEmployee(Employee $id)
+    {
+        $Employee = $this->getEmployeeDetail($id->id);
+        $Division = $this->getDivision();
+        $Position = $this->getPosition();
+
+        return view('employee/edit-employee', [
+            'Employee' => $Employee,
+            'Division' => $Division,
+            'Position' => $Position
+        ]);
+    }
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Update Employee Detail
+    |--------------------------------------------------------------------------
+    */   
+    
+    public function updateEmployee(Employee $id)
+    {
+        request()->validate([
+            'employee_id'       => 'required',
+            'firstname'         => 'required',
+            'middlename'        => 'required',
+            'lastname'          => 'required',
+            'birthday'          => 'required',
+            'date_hired'        => 'required',
+            'division'          => 'required',
+            'position'          => 'required'
+        ]);
+
+        $id->update(request([
+            'employee_id',
+            'firstname',
+            'middlename',
+            'lastname',
+            'birthday',
+            'date_hired',
+            'division',
+            'position',
+            'status'         
+        ]));
+
+        return redirect()->action('EmployeeController@viewEmployee', $id->id)->with('success', 'Employee Detail successfully updated!');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
     | Fetch Employee Detail From Database
     |--------------------------------------------------------------------------
     */
@@ -114,8 +169,9 @@ class EmployeeController extends Controller
     public function getEmployeeDetail($id)
     {
 		$Employee = DB::table('employees')
-								->join('divisions', 'employees.id', '=', 'divisions.id')
-								->join('positions', 'employees.id', '=', 'positions.id')
+								->join('divisions', 'employees.division', '=', 'divisions.id')
+                                ->join('positions', 'employees.position', '=', 'positions.id')
+                                ->where('employees.id', '=', $id)
 								->select(
                                     'employees.id',
                                     'employees.employee_id',
@@ -141,7 +197,7 @@ class EmployeeController extends Controller
 
     public function getDivision()
     {
-        $Division = Division::all();
+        $Division = Division::orderBy('division', 'asc')->get();
 
         return $Division;
     }
@@ -154,7 +210,7 @@ class EmployeeController extends Controller
 
     public function getPosition()
     {
-        $Position = Position::all();
+        $Position = Position::orderBy('position', 'asc')->get();
 
         return $Position;
     }

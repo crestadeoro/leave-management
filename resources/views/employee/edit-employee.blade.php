@@ -1,6 +1,6 @@
 @extends('layouts/master')
 
-@section('title', 'Add Employee')
+@section('title', 'Edit Employee')
 
 @section('extended css')
 <style type="text/css">
@@ -14,7 +14,7 @@
 @section('content')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Employee</h1>
+    <h1 class="h3 mb-0 text-gray-800">{{ strtoupper($Employee->lastname).', '.strtoupper($Employee->firstname).' '.strtoupper($Employee->middlename) }}</h1>
 </div>
 
 <div class="row">
@@ -23,20 +23,21 @@
         <div class="card shadow mb-4">
             <!-- Card Header -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-warning">Add Employee</h6>
+                <h6 class="m-0 font-weight-bold text-warning">Edit Employee</h6>
                 <div class="dropdown no-arrow">
                 </div>
             </div>
             <!-- Card Body -->
             <div class="card-body">
                 <div class="form-area">
-                    <form method="POST" action="/employee/save-employee">
+                    <form method="POST" action="/employee/update-employee/{{ $Employee->id }}">
+                        @method('PATCH')
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <label for="employee_id">Employee Id</label>
                                 <input type="text" class="form-control @error('employee_id') is-invalid @enderror"
-                                    id="employee_id" name="employee_id" value="{{ old('employee_id') }}" autofocus>
+                                    id="employee_id" name="employee_id" value="{{ $Employee->employee_id }}" autofocus>
     
                                 @error('employee_id')
                                 <span class="invalid-feedback" role="alert">
@@ -49,7 +50,7 @@
                             <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <label for="firstname">Firstname</label>
                                 <input type="text" class="form-control @error('firstname') is-invalid @enderror"
-                                    id="firstname" name="firstname" value="{{ old('firstname') }}">
+                                    id="firstname" name="firstname" value="{{ $Employee->firstname }}">
     
                                 @error('firstname')
                                 <span class="invalid-feedback" role="alert">
@@ -60,7 +61,7 @@
                             <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <label for="middlename">Middlename</label>
                                 <input type="text" class="form-control @error('middlename') is-invalid @enderror"
-                                    id="middlename" name="middlename" value="{{ old('middlename') }}">
+                                    id="middlename" name="middlename" value="{{ $Employee->middlename }}">
     
                                 @error('middlename')
                                 <span class="invalid-feedback" role="alert">
@@ -71,7 +72,7 @@
                             <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <label for="lastname">Lastname</label>
                                 <input type="text" class="form-control @error('lastname') is-invalid @enderror"
-                                    id="lastname" name="lastname" value="{{ old('lastname') }}">
+                                    id="lastname" name="lastname" value="{{ $Employee->lastname }}">
     
                                 @error('lastname')
                                 <span class="invalid-feedback" role="alert">
@@ -84,7 +85,7 @@
                             <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="birthday">Birthday</label>
                                 <input type="date" class="form-control @error('birthday') is-invalid @enderror"
-                                    id="birthday" name="birthday" value="{{ old('birthday') }}">
+                                    id="birthday" name="birthday" value="{{ $Employee->birthday }}">
     
                                 @error('birthday')
                                 <span class="invalid-feedback" role="alert">
@@ -95,7 +96,7 @@
                             <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="date_hired">Date Hired</label>
                                 <input type="date" class="form-control @error('date_hired') is-invalid @enderror"
-                                    id="date_hired" name="date_hired" value="{{ old('date_hired') }}">
+                                    id="date_hired" name="date_hired" value="{{ $Employee->date_hired }}">
     
                                 @error('date_hired')
                                 <span class="invalid-feedback" role="alert">
@@ -111,7 +112,7 @@
                                 name="division">
                                     <option value="">SELECT</option>
                                     @foreach ($Division as $Divisions)
-                                        <option value="{{ $Divisions->id }}" @if(old('division')==$Divisions->id) selected
+                                        <option value="{{ $Divisions->id }}" @if($Employee->division == $Divisions->division) selected
                                             @endif>{{ strtoupper($Divisions->division) }}</option>
                                     @endforeach
                                 </select>
@@ -128,7 +129,7 @@
                                 name="position">
                                     <option value="">SELECT</option>
                                     @foreach ($Position as $Positions)
-                                        <option value="{{ $Positions->id }}" @if(old('position')==$Positions->id) selected
+                                        <option value="{{ $Positions->id }}" @if($Employee->position == $Positions->position) selected
                                             @endif>{{ strtoupper($Positions->position) }}</option>
                                     @endforeach
                                 </select>
@@ -146,11 +147,11 @@
                                 <select class="form-control @error('status') is-invalid @enderror" id="status"
                                 name="status">
                                     <option value="">SELECT</option>
-                                    <option value="contractual" @if(old('status') == 'contractual') selected @endif>CONTRACTUAL</option>
-                                    <option value="probitionary" @if(old('status') == 'probitionary') selected @endif>PROBITIONARY</option>
-                                    <option value="regular" @if(old('status') == 'regular') selected @endif>REGULAR</option>
-                                    <option value="resigned" @if(old('status') == 'resigned') selected @endif>RESIGNED</option>
-                                    <option value="terminated" @if(old('status') == 'terminated') selected @endif>TERMINATED</option>
+                                    <option value="contractual" @if($Employee->status == 'contractual') selected @endif>CONTRACTUAL</option>
+                                    <option value="probitionary" @if($Employee->status == 'probitionary') selected @endif>PROBITIONARY</option>
+                                    <option value="regular" @if($Employee->status == 'regular') selected @endif>REGULAR</option>
+                                    <option value="resigned" @if($Employee->status == 'resigned') selected @endif>RESIGNED</option>
+                                    <option value="terminated" @if($Employee->status == 'terminated') selected @endif>TERMINATED</option>
                                 </select>
     
                                 @error('status')
@@ -188,6 +189,5 @@
 @section('extended js')
 <script type="text/javascript">
     $('.toast').toast('show')
-
 </script>
 @endsection

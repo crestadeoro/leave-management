@@ -22,6 +22,17 @@
             <!-- Card Header -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">Employee Detail</h6>
+                <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                        aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-header">Action:</div>
+                        <a class="dropdown-item" href="/employee/edit-employee/{{ $Employee->id }}">Edit</a>
+                    </div>
+                </div>                
             </div>
             <!-- Card Body -->
             <div class="card-body">
@@ -51,13 +62,13 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
-                        <label>Date Hired:</label>
+                        <label>Birthday:</label>
                         <span>{{ date('F d, Y', strtotime($Employee->birthday)) }}</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
-                        <label>Date Hired:</label>
+                        <label>Employment Status:</label>
                         <span class="text-success">{{ strtoupper($Employee->status) }}</span>
                     </div>
                 </div>                                                                
@@ -65,4 +76,26 @@
         </div>
     </div>
 </div>
+
+@if (session('success'))
+<div class="toast" role="alert" aria-live="polite" aria-atomic="true" data-delay="3000"
+    style="position: absolute; top: 75px; right: 0; width: 250px">
+    <div class="toast-header">
+        <strong class="mr-auto">GoldridgeCDC</strong>
+        <small>Now</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="toast-body">
+        {{ session('success') }}
+    </div>
+</div>
+@endif
+@endsection
+
+@section('extended js')
+<script type="text/javascript">
+    $('.toast').toast('show')
+</script>
 @endsection

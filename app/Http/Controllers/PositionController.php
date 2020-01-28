@@ -22,7 +22,7 @@ class PositionController extends Controller
     |--------------------------------------------------------------------------
     | Save Position Information
     |--------------------------------------------------------------------------
-    */ 
+    */
 
     public function savePosition()
     {
