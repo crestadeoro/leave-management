@@ -69,7 +69,7 @@
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
                         <label>Employment Status:</label>
-                        <span class="text-success">{{ strtoupper($Employee->status) }}</span>
+                        <span>{{ strtoupper($Employee->status) }}</span>
                     </div>
                 </div>                                                                
             </div>
