@@ -6,8 +6,11 @@
 <style type="text/css">
     input {
         text-transform: uppercase;
-    }
-
+	}
+	
+	table{
+		font-size: 10pt;
+	}
 </style>
 @endsection
 
@@ -29,7 +32,24 @@
             	</div>
             	<!-- Card Body -->
             	<div class="card-body">
-
+            		<div class="table-responsive">
+            			<table class="table table-bordered table-division" id="dataTable" width="100%" cellspacing="0">
+            				<thead>
+            					<tr>
+									<th>Division/Project</th>
+									<th>Action</th>
+            					</tr>
+            				</thead>
+            				<tbody>
+                                @foreach($Division as $Divisions)
+                                    <tr>
+                                        <td>{{ $Divisions->division }}</td>
+										<td><a href="/employee/edit-division/{{ $Divisions->id }}" class="btn btn-success btn-sm btn-circle"><i class="fas fa-eye"></i></i></a></td>
+                                    </tr>
+                                @endforeach
+            				</tbody>
+            			</table>
+            		</div>
             	</div>
           	</div>
         </div>
@@ -88,4 +108,11 @@
     $('.toast').toast('show')
 
 </script>
+
+	<!-- Page level plugins -->
+	<script src="{{ asset('admin-template/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('admin-template/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="{{ asset('admin-template/js/demo/datatables-demo.js') }}"></script>
 @endsection

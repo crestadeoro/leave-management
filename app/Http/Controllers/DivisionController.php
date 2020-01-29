@@ -9,7 +9,11 @@ class DivisionController extends Controller
 {
     public function indexDivision()
     {
-        return view('employee.division');
+        $Division = Division::all();
+
+        return view('employee.division', [
+            'Division' => $Division
+        ]);
     }
 
     public function saveDivision()
