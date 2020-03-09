@@ -7,13 +7,16 @@
     label {
         font-weight: bold;
     }
+
 </style>
 @endsection
 
 @section('content')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">{{ strtoupper($Employee->lastname).', '.strtoupper($Employee->firstname).' '.strtoupper($Employee->middlename) }}</h1>
+    <h1 class="h3 mb-0 text-gray-800">
+        {{ strtoupper($Employee->lastname).', '.strtoupper($Employee->firstname).' '.strtoupper($Employee->middlename) }}
+    </h1>
 </div>
 
 <div class="row">
@@ -31,8 +34,9 @@
                         aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Action:</div>
                         <a class="dropdown-item" href="/employee/edit-employee/{{ $Employee->id }}">Edit</a>
+                        <a class="dropdown-item" href="/employee/add-leave/{{ $Employee->id }}">Add Leave</a>
                     </div>
-                </div>                
+                </div>
             </div>
             <!-- Card Body -->
             <div class="card-body">
@@ -71,7 +75,7 @@
                         <label>Employment Status:</label>
                         <span>{{ strtoupper($Employee->status) }}</span>
                     </div>
-                </div>                                                                
+                </div>
             </div>
         </div>
     </div>
@@ -97,5 +101,6 @@
 @section('extended js')
 <script type="text/javascript">
     $('.toast').toast('show')
+
 </script>
 @endsection

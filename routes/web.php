@@ -49,3 +49,12 @@ Route::post('/employee/save-position', 'PositionController@savePosition');
 
 Route::get('/employee/division', 'DivisionController@indexDivision');
 Route::post('/employee/save-division', 'DivisionController@saveDivision');
+
+/*
+|--------------------------------------------------------------------------
+| Leave
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/employee/add-leave/{id}', 'LeaveController@indexLeave');
+Route::post('/employee/save-leave/{id}', 'LeaveController@saveLeave');
