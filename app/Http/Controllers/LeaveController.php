@@ -37,7 +37,7 @@ class LeaveController extends Controller
                                 ->first();
                                 
         return $Employee;
-    } 
+    }
     
     /*
     |--------------------------------------------------------------------------
@@ -53,12 +53,12 @@ class LeaveController extends Controller
             'category' 		    => 	'required'
         ]);
         
-    	$data = Leave::create(request([
+    	DB::table('leaves')->insert([
             'employee_id' => $id->id,
-            'date_from',
-            'date_to',
-            'category'
-        ]));
+            'date_from' => request('date_from'),
+            'date_to' => request('date_to'),
+            'category' => request('category'),
+        ]);
         
         return redirect()->action('EmployeeController@viewEmployee', $id->id)->with('success', 'Employee leave successfully saved!');
     }    

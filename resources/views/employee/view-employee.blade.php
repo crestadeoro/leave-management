@@ -79,6 +79,43 @@
             </div>
         </div>
     </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="card shadow mb-4">
+            <!-- Card Header -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Employee Leave</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Date From</th>
+                                <th>Date To</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($Leave as $Leaves)
+                                <tr>
+                                    <td>{{ date('F d, Y', strtotime($Leaves->date_from)) }}</td>
+                                    <td>{{ date('F d, Y', strtotime($Leaves->date_to)) }}</td>
+                                    <td>
+                                        @if($Leaves->category == 'paid')
+                                            <span class="badge badge-primary">{{ strtoupper($Leaves->category) }}</span>
+                                        @else
+                                            <span class="badge badge-danger">{{ strtoupper($Leaves->category) }}</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>                        
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @if (session('success'))

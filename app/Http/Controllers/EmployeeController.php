@@ -101,9 +101,12 @@ class EmployeeController extends Controller
     public function viewEmployee(Employee $id)
     {
         $Employee = $this->getEmployeeDetail($id->id);
+
+        $Leave = $this->getEmployeeLeave($id->id);
         
         return view('employee/view-employee', [
-            'Employee' => $Employee
+            'Employee' => $Employee,
+            'Leave' => $Leave
         ]);
     }
 
@@ -188,6 +191,26 @@ class EmployeeController extends Controller
                                 
         return $Employee;
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fetch Employee Leave From Database
+    |--------------------------------------------------------------------------
+    */
+    
+    public function getEmployeeLeave($id)
+    {
+		$Leave = DB::table('leaves')
+                                ->where('leaves.employee_id', '=', $id)
+								->select(
+                                    'leaves.date_from',
+                                    'leaves.date_to',
+                                    'leaves.category'
+								)
+                                ->get();
+                                
+        return $Leave;
+    }    
 
     /*
     |--------------------------------------------------------------------------
