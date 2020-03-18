@@ -34,7 +34,6 @@
                         aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Action:</div>
                         <a class="dropdown-item" href="/employee/edit-employee/{{ $Employee->id }}">Edit</a>
-                        <a class="dropdown-item" href="/employee/add-leave/{{ $Employee->id }}">Add Leave</a>
                     </div>
                 </div>
             </div>
@@ -84,6 +83,17 @@
             <!-- Card Header -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">Employee Leave</h6>
+                <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                        aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-header">Action:</div>
+                        <a class="dropdown-item" href="/employee/add-leave/{{ $Employee->id }}">Add Leave</a>
+                    </div>
+                </div>
             </div>
             <!-- Card Body -->
             <div class="card-body">

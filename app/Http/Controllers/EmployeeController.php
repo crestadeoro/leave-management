@@ -72,7 +72,8 @@ class EmployeeController extends Controller
     {
 		$EmployeeDetail = DB::table('employees')
 								->join('divisions', 'employees.division', '=', 'divisions.id')
-								->join('positions', 'employees.position', '=', 'positions.id')
+                                ->join('positions', 'employees.position', '=', 'positions.id')
+                                ->where('employees.status', '!=', 'duplicate')
 								->select(
                                     'employees.id',
                                     'employees.employee_id',
@@ -236,5 +237,20 @@ class EmployeeController extends Controller
         $Position = Position::orderBy('position', 'asc')->get();
 
         return $Position;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Remove Duplicate Employee
+    |--------------------------------------------------------------------------
+    */    
+
+    public function removeDuplicateEmployee(Employee $id)
+    {
+        DB::table('employees')
+            ->where('id', $id->id)
+            ->update(['status' => 'duplicate']);
+
+        return redirect()->action('EmployeeController@listEmployee')->with('success', 'Duplicate Record successfully removed!');       
     }
 }

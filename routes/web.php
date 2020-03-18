@@ -31,6 +31,7 @@ Route::get('/employee/list-employee', 'EmployeeController@listEmployee');
 Route::get('/employee/view-employee/{id}', 'EmployeeController@viewEmployee');
 Route::get('/employee/edit-employee/{id}', 'EmployeeController@editEmployee');
 Route::patch('/employee/update-employee/{id}', 'EmployeeController@updateEmployee');
+Route::post('/employee/remove-duplicate/{id}', 'EmployeeController@removeDuplicateEmployee');
 
 /*
 |--------------------------------------------------------------------------
