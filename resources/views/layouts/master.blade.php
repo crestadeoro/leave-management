@@ -67,10 +67,12 @@
                     <i class="fas fa-id-card"></i>
                     <span>Employee</span>
                 </a>
-                <div id="collapseEmployee" class="collapse @if(stripos(Request::path(), 'employee' ) !==FALSE) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseEmployee"
+                    class="collapse @if(stripos(Request::path(), 'employee' ) !==FALSE) show @endif"
+                    aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item @if(Request::path() == 'employee/list-employee') active @endif"
-                            href="/employee/list-employee">List of Employee</a>                     
+                            href="/employee/list-employee">List of Employee</a>
                         <a class="collapse-item @if(Request::path() == 'employee/add-employee') active @endif"
                             href="/employee/add-employee">Add Employee</a>
                         <a class="collapse-item @if(Request::path() == 'employee/division') active @endif"
@@ -80,6 +82,13 @@
                     </div>
                 </div>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/leave-summary">
+                  <i class="fas fa-file-alt"></i>
+                  <span>Leave Summary</span>
+              </a>
+            </li>            
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

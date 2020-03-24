@@ -59,3 +59,11 @@ Route::post('/employee/save-division', 'DivisionController@saveDivision');
 
 Route::get('/employee/add-leave/{id}', 'LeaveController@indexLeave');
 Route::post('/employee/save-leave/{id}', 'LeaveController@saveLeave');
+
+/*
+|--------------------------------------------------------------------------
+| Leave Summary
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/leave-summary', 'LeaveController@summaryLeave');
