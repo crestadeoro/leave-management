@@ -37,13 +37,18 @@ class EmployeeController extends Controller
     public function saveEmployee()
     {
         request()->validate([
-            'employee_id' 		=> 	'required',
+//            'employee_id' 		=> 	'required',
             'firstname' 		=> 	'required',
             'lastname' 		    => 	'required',
-            'birthday' 		    => 	'required',
+//            'birthday' 		    => 	'required',
+            'address' 		    => 	'required',
             'date_hired' 		=> 	'required',
             'division' 		    => 	'required',
             'position' 		    => 	'required',
+//            'sss' 		        => 	'required',
+//            'philhealth' 		=> 	'required',
+//            'hdmf' 		        => 	'required',
+//            'tin' 		        => 	'required',
             'status'            =>  'required'
         ]);
         
@@ -53,9 +58,14 @@ class EmployeeController extends Controller
             'middlename',
             'lastname',
             'birthday',
+            'address',
             'date_hired',
             'division',
             'position',
+            'sss',
+            'philhealth',
+            'hdmf',
+            'tin',
             'status'
         ]));
         
@@ -139,14 +149,19 @@ class EmployeeController extends Controller
     public function updateEmployee(Employee $id)
     {
         request()->validate([
-            'employee_id'       => 'required',
-            'firstname'         => 'required',
-            'middlename'        => 'required',
-            'lastname'          => 'required',
-            'birthday'          => 'required',
-            'date_hired'        => 'required',
-            'division'          => 'required',
-            'position'          => 'required'
+//              'employee_id' 		=> 	'required',
+                'firstname' 		=> 	'required',
+                'lastname' 		    => 	'required',
+//               'birthday' 		    => 	'required',
+                'address' 		    => 	'required',
+                'date_hired' 		=> 	'required',
+                'division' 		    => 	'required',
+                'position' 		    => 	'required',
+//              'sss' 		        => 	'required',
+//              'philhealth' 		=> 	'required',
+//              'hdmf' 		        => 	'required',
+//              'tin' 		        => 	'required',
+                'status'            =>  'required'
         ]);
 
         $id->update(request([
@@ -155,9 +170,14 @@ class EmployeeController extends Controller
             'middlename',
             'lastname',
             'birthday',
+            'address',
             'date_hired',
             'division',
             'position',
+            'sss',
+            'philhealth',
+            'hdmf',
+            'tin',
             'status'         
         ]));
 
@@ -183,7 +203,12 @@ class EmployeeController extends Controller
                                     'employees.middlename',
                                     'employees.lastname',
                                     'employees.birthday',
+                                    'employees.address',
                                     'employees.date_hired',
+                                    'employees.sss',
+                                    'employees.philhealth',
+                                    'employees.hdmf',
+                                    'employees.tin',
                                     'employees.status',
                                     'divisions.division',
                                     'positions.position'

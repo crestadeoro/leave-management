@@ -105,6 +105,65 @@
                             </div>                                                                                    
                         </div>
                         <div class="row">
+                            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control @error('address') is-invalid @enderror"
+                                    id="address" name="address" value="{{ old('address') }}">
+    
+                                @error('address')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>                                                                                 
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <label for="sss">SSS</label>
+                                <input type="text" class="form-control @error('sss') is-invalid @enderror"
+                                    id="sss" name="sss" value="{{ old('sss') }}">
+    
+                                @error('sss')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <label for="philhealth">PhilHealth</label>
+                                <input type="text" class="form-control @error('philhealth') is-invalid @enderror"
+                                    id="philhealth" name="philhealth" value="{{ old('philhealth') }}">
+    
+                                @error('philhealth')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <label for="hdmf">HDMF</label>
+                                <input type="text" class="form-control @error('hdmf') is-invalid @enderror"
+                                    id="hdmf" name="hdmf" value="{{ old('hdmf') }}">
+    
+                                @error('hdmf')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <label for="tin">TIN</label>
+                                <input type="text" class="form-control @error('tin') is-invalid @enderror"
+                                    id="tin" name="tin" value="{{ old('tin') }}">
+    
+                                @error('tin')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>                                                        
+                        </div>                        
+                        <div class="row">
                             <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="division">Division/Project</label>
                                 <select class="form-control @error('division') is-invalid @enderror" id="division"

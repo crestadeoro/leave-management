@@ -19,7 +19,7 @@
     </h1>
 </div>
 
-<div class="row">
+<div class="row col-xs-12">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <div class="card shadow mb-4">
             <!-- Card Header -->
@@ -69,6 +69,32 @@
                         <span>{{ date('F d, Y', strtotime($Employee->birthday)) }}</span>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <label>Address:</label>
+                        <span>{{ strtoupper($Employee->address) }}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-xs-6">
+                        <label>SSS:</label>
+                        <span>{{ $Employee->sss }}</span>
+                    </div>
+                    <div class="col-md-6 col-xs-6">
+                        <label>PhilHealth:</label>
+                        <span>{{ $Employee->philhealth }}</span>
+                    </div>                    
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-xs-6">
+                        <label>HDMF:</label>
+                        <span>{{ $Employee->hdmf }}</span>
+                    </div>
+                    <div class="col-md-6 col-xs-6">
+                        <label>TIN:</label>
+                        <span>{{ $Employee->tin }}</span>
+                    </div>                    
+                </div>               
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
                         <label>Employment Status:</label>
