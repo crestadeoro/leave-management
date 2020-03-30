@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Position;
 
 class PositionController extends Controller
@@ -15,7 +16,11 @@ class PositionController extends Controller
 
     public function indexPosition()
     {
-    	return view('position.position');
+        $Position = Position::all();
+
+    	return view('position.position', [
+            'Position' => $Position
+        ]);
     }
 
     /*
@@ -36,4 +41,43 @@ class PositionController extends Controller
         
         return redirect()->action('PositionController@indexPosition')->with('success', 'New Position successfully saved!');
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Edit Position Page
+    |--------------------------------------------------------------------------
+    */    
+
+    public function editPosition(Position $id)
+    {
+        $Position = DB::table('positions')
+                            ->where('id', '=', $id->id)
+                            ->select(
+                                'id',
+                                'position'
+                            )->first();
+        
+        return view('position.edit-position', [
+            'Position' => $Position
+        ]);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Update Position Information
+    |--------------------------------------------------------------------------
+    */    
+
+    public function updatePosition(Position $id)
+    {
+        request()->validate([
+    		'position' 		=> 	'required'			
+        ]);
+
+        $id->update(request([
+            'position'
+        ]));
+
+        return redirect()->action('PositionController@indexPosition')->with('success', 'Position successfully updated!'); 
+    }    
 }

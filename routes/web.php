@@ -41,6 +41,8 @@ Route::post('/employee/remove-duplicate/{id}', 'EmployeeController@removeDuplica
 
 Route::get('/position/position', 'PositionController@indexPosition');
 Route::post('/position/save-position', 'PositionController@savePosition');
+Route::get('/position/edit-position/{id}', 'PositionController@editPosition');
+Route::patch('/position/update-position/{id}', 'PositionController@updatePosition');
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +52,8 @@ Route::post('/position/save-position', 'PositionController@savePosition');
 
 Route::get('/division/division', 'DivisionController@indexDivision');
 Route::post('/division/save-division', 'DivisionController@saveDivision');
+Route::get('/division/edit-division/{id}', 'DivisionController@editDivision');
+Route::patch('/division/update-division/{id}', 'DivisionController@updateDivision');
 
 /*
 |--------------------------------------------------------------------------

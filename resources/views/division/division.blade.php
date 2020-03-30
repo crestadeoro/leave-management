@@ -43,8 +43,8 @@
             				<tbody>
                                 @foreach($Division as $Divisions)
                                     <tr>
-                                        <td>{{ $Divisions->division }}</td>
-										<td><a href="/employee/edit-division/{{ $Divisions->id }}" class="btn btn-success btn-sm btn-circle"><i class="fas fa-eye"></i></i></a></td>
+                                        <td>{{ strtoupper($Divisions->division) }}</td>
+										<td><a href="/division/edit-division/{{ $Divisions->id }}" class="btn btn-success btn-sm btn-circle"><i class="fas fa-eye"></i></i></a></td>
                                     </tr>
                                 @endforeach
             				</tbody>

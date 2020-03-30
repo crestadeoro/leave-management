@@ -68,27 +68,47 @@
                     <span>Employee</span>
                 </a>
                 <div id="collapseEmployee"
-                    class="collapse @if(stripos(Request::path(), 'employee' ) !==FALSE) show @endif"
+                    class="collapse @if(stripos(Request::path(), 'employee') !== FALSE) show @endif"
                     aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item @if(Request::path() == 'employee/list-employee') active @endif"
                             href="/employee/list-employee">List of Employee</a>
                         <a class="collapse-item @if(Request::path() == 'employee/add-employee') active @endif"
                             href="/employee/add-employee">Add Employee</a>
-                        <a class="collapse-item @if(Request::path() == 'division/division') active @endif"
-                            href="/division/division">Division/Project</a>
-                        <a class="collapse-item @if(Request::path() == 'division/position') active @endif"
-                            href="/position/position">Position</a>
                     </div>
                 </div>
             </li>
 
+            <!-- Position -->
             <li class="nav-item">
-              <a class="nav-link collapsed" href="/leave-summary">
-                  <i class="fas fa-file-alt"></i>
-                  <span>Leave Summary</span>
+              <a class="nav-link collapsed active" href="/position/position">
+                <i class="fas fa-user-plus"></i>
+                  <span>Position</span>
               </a>
-            </li>            
+          </li> 
+
+                      <!-- Division -->
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/division/division">
+                <i class="fas fa-building"></i>
+                  <span>Division</span>
+              </a>
+          </li>           
+
+            <!-- Reports -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Reports</span>
+                </a>
+                <div id="collapseReport" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="#">Employee</a>
+                        <a class="collapse-item" href="#">Leave</a>
+                    </div>
+                </div>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

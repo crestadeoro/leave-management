@@ -29,7 +29,24 @@
             	</div>
             	<!-- Card Body -->
             	<div class="card-body">
-
+            		<div class="table-responsive">
+            			<table class="table table-bordered table-division" id="dataTable" width="100%" cellspacing="0">
+            				<thead>
+            					<tr>
+									<th>Position</th>
+									<th>Action</th>
+            					</tr>
+            				</thead>
+            				<tbody>
+                                @foreach($Position as $Positions)
+                                    <tr>
+                                        <td>{{ strtoupper($Positions->position) }}</td>
+										<td><a href="/position/edit-position/{{ $Positions->id }}" class="btn btn-success btn-sm btn-circle"><i class="fas fa-eye"></i></i></a></td>
+                                    </tr>
+                                @endforeach
+            				</tbody>
+            			</table>
+            		</div>
             	</div>
           	</div>
         </div>
@@ -86,6 +103,12 @@
 @section('extended js')
 <script type="text/javascript">
     $('.toast').toast('show')
-
 </script>
+
+	<!-- Page level plugins -->
+	<script src="{{ asset('admin-template/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('admin-template/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="{{ asset('admin-template/js/demo/datatables-demo.js') }}"></script>
 @endsection
