@@ -27,27 +27,29 @@
                     <table class="table table-bordered table-employee" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Employee ID</th>
                                 <th>Name</th>
-                                <th>Birthday</th>
-                                <th>Date Hired</th>
+                                <th>Employee ID</th>
                                 <th>Division/Project</th>
                                 <th>Position</th>
+                                <th>Date Hired</th>
                                 <th>Status</th>
+                                <th>Birthday</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($EmployeeDetail as $EmployeeDetails)
                             <tr>
-                                <td>{{ $EmployeeDetails->employee_id }}</td>
+                                
                                 <td>{{ strtoupper($EmployeeDetails->lastname).', '.strtoupper($EmployeeDetails->firstname).' '.strtoupper($EmployeeDetails->middlename) }}
                                 </td>
-                                <td>{{ date('F d, Y', strtotime($EmployeeDetails->birthday)) }}</td>
-                                <td>{{ date('F d, Y', strtotime($EmployeeDetails->date_hired)) }}</td>
+                                <td>{{ $EmployeeDetails->employee_id }}</td>
+                                
                                 <td>{{ strtoupper($EmployeeDetails->division) }}</td>
                                 <td>{{ strtoupper($EmployeeDetails->position) }}</td>
+                                <td>{{ date('F d, Y', strtotime($EmployeeDetails->date_hired)) }}</td>
                                 <td>{{ strtoupper($EmployeeDetails->status) }}</td>
+                                <td>{{ date('F d, Y', strtotime($EmployeeDetails->birthday)) }}</td>
                                 <td>
                                     <a href="/employee/view-employee/{{ $EmployeeDetails->id }}"
                                     class="btn btn-success btn-sm btn-circle" title="View Record"><i class="fas fa-eye"></i></a>
