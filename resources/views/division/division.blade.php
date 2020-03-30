@@ -1,20 +1,23 @@
 @extends('layouts/master')
 
-@section('title', 'Position')
+@section('title', 'Division')
 
 @section('extended css')
 <style type="text/css">
     input {
         text-transform: uppercase;
-    }
-
+	}
+	
+	table{
+		font-size: 10pt;
+	}
 </style>
 @endsection
 
 @section('content')
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Position</h1>
+        <h1 class="h3 mb-0 text-gray-800">Division/Project</h1>
     </div>
 
     <div class="row">
@@ -23,13 +26,30 @@
         	<div class="card shadow mb-4">
             	<!-- Card Header -->
             	<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-              		<h6 class="m-0 font-weight-bold text-warning">View Position</h6>
+              		<h6 class="m-0 font-weight-bold text-warning">View Division/Project</h6>
               		<div class="dropdown no-arrow">
               		</div>
             	</div>
             	<!-- Card Body -->
             	<div class="card-body">
-
+            		<div class="table-responsive">
+            			<table class="table table-bordered table-division" id="dataTable" width="100%" cellspacing="0">
+            				<thead>
+            					<tr>
+									<th>Division/Project</th>
+									<th>Action</th>
+            					</tr>
+            				</thead>
+            				<tbody>
+                                @foreach($Division as $Divisions)
+                                    <tr>
+                                        <td>{{ $Divisions->division }}</td>
+										<td><a href="/employee/edit-division/{{ $Divisions->id }}" class="btn btn-success btn-sm btn-circle"><i class="fas fa-eye"></i></i></a></td>
+                                    </tr>
+                                @endforeach
+            				</tbody>
+            			</table>
+            		</div>
             	</div>
           	</div>
         </div>
@@ -39,20 +59,20 @@
         	<div class="card shadow mb-4">
             	<!-- Card Header -->
             	<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-              		<h6 class="m-0 font-weight-bold text-warning">Add Position</h6>
+              		<h6 class="m-0 font-weight-bold text-warning">Add Division/Project</h6>
               		<div class="dropdown no-arrow">
               		</div>
             	</div>
             	<!-- Card Body -->
             	<div class="card-body">
             		<div class="form-area">
-                		<form method="POST" action="/employee/save-position">
+                		<form method="POST" action="/division/save-division">
                 			{{ csrf_field() }}
                 			<div class="form-group">
-    							<label for="position">Position Name</label>
-    							<input type="text" class="form-control @error('position') is-invalid @enderror" id="position" name="position" autofocus>
+    							<label for="division">Division/Project Name</label>
+    							<input type="text" class="form-control @error('division') is-invalid @enderror" id="division" name="division" autofocus>
 
-    							@error('position')
+    							@error('division')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -88,4 +108,11 @@
     $('.toast').toast('show')
 
 </script>
+
+	<!-- Page level plugins -->
+	<script src="{{ asset('admin-template/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('admin-template/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="{{ asset('admin-template/js/demo/datatables-demo.js') }}"></script>
 @endsection

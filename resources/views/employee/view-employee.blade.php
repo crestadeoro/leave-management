@@ -117,7 +117,7 @@
                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                         aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Action:</div>
-                        <a class="dropdown-item" href="/employee/add-leave/{{ $Employee->id }}">Add Leave</a>
+                        <a class="dropdown-item" href="/employee/leave/add-leave/{{ $Employee->id }}">Add Leave</a>
                     </div>
                 </div>
             </div>
@@ -130,6 +130,7 @@
                                 <th>Date From</th>
                                 <th>Date To</th>
                                 <th>Type</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -143,6 +144,9 @@
                                         @else
                                             <span class="badge badge-danger">{{ strtoupper($Leaves->category) }}</span>
                                         @endif
+                                    </td>
+                                    <td><a href="/employee/leave/edit-leave/{{ $Leaves->id }}"
+                                        class="btn btn-success btn-sm btn-circle" title="Edit Leave"><i class="fas fa-pencil-alt"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

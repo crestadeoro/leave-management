@@ -15,7 +15,7 @@ class LeaveController extends Controller
     {
         $Employee = $this->getEmployeeDetail($id->id);
 
-        return view('employee.add-leave', [
+        return view('employee.leave.add-leave', [
             'Employee' => $Employee
         ]);
     }
@@ -43,7 +43,7 @@ class LeaveController extends Controller
     
     /*
     |--------------------------------------------------------------------------
-    | Save Employee Details
+    | Save Employee Leave
     |--------------------------------------------------------------------------
     */
 
@@ -63,11 +63,79 @@ class LeaveController extends Controller
         ]);
         
         return redirect()->action('EmployeeController@viewEmployee', $id->id)->with('success', 'Employee leave successfully saved!');
-    }   
+    } 
 
     /*
     |--------------------------------------------------------------------------
-    | Leave Summary
+    | Edit Employee Leave Page
+    |--------------------------------------------------------------------------
+    */      
+
+    public function editLeave(Leave $id)
+    {
+        $Leave = $this->getEmployeeLeave($id->id);
+                          
+        $EmployeeName = strtoupper($Leave->lastname.', '.$Leave->firstname.' '.$Leave->middlename);               
+
+        return view('employee.leave.edit-leave', [
+            'Leave' => $Leave,
+            'EmployeeName' => $EmployeeName
+        ]);       
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Update Employee Leave
+    |--------------------------------------------------------------------------
+    */
+
+    public function updateLeave(Leave $id)
+    {
+        $Leave = $this->getEmployeeLeave($id->id);
+
+        request()->validate([
+            'date_from' 		=> 	'required',
+            'date_to' 		    => 	'required',
+            'category' 		    => 	'required'
+        ]);
+        
+        $id->update(request([
+            'date_from',
+            'date_to',
+            'category'
+        ]));
+
+        return redirect()->action('EmployeeController@viewEmployee', $Leave->employee_id)->with('success', 'Employee Leave successfully updated!');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fetch Individual Employee Leave
+    |--------------------------------------------------------------------------
+    */    
+
+    public function getEmployeeLeave($id)
+    {
+        $Leave = DB::table('leaves')
+                        ->join('employees', 'employees.id', '=', 'leaves.employee_id')
+                        ->where('leaves.id', '=', $id)
+                        ->select(
+                            'employees.firstname',
+                            'employees.middlename',
+                            'employees.lastname',
+                            'leaves.id',
+                            'leaves.employee_id',
+                            'leaves.date_from',
+                            'leaves.date_to',
+                            'leaves.category'
+                        )->first();
+
+        return $Leave;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Leave Summary Page
     |--------------------------------------------------------------------------
     */
 

@@ -39,8 +39,8 @@ Route::post('/employee/remove-duplicate/{id}', 'EmployeeController@removeDuplica
 |--------------------------------------------------------------------------
 */
 
-Route::get('/employee/position', 'PositionController@indexPosition');
-Route::post('/employee/save-position', 'PositionController@savePosition');
+Route::get('/position/position', 'PositionController@indexPosition');
+Route::post('/position/save-position', 'PositionController@savePosition');
 
 /*
 |--------------------------------------------------------------------------
@@ -48,8 +48,8 @@ Route::post('/employee/save-position', 'PositionController@savePosition');
 |--------------------------------------------------------------------------
 */
 
-Route::get('/employee/division', 'DivisionController@indexDivision');
-Route::post('/employee/save-division', 'DivisionController@saveDivision');
+Route::get('/division/division', 'DivisionController@indexDivision');
+Route::post('/division/save-division', 'DivisionController@saveDivision');
 
 /*
 |--------------------------------------------------------------------------
@@ -57,8 +57,10 @@ Route::post('/employee/save-division', 'DivisionController@saveDivision');
 |--------------------------------------------------------------------------
 */
 
-Route::get('/employee/add-leave/{id}', 'LeaveController@indexLeave');
-Route::post('/employee/save-leave/{id}', 'LeaveController@saveLeave');
+Route::get('/employee/leave/add-leave/{id}', 'LeaveController@indexLeave');
+Route::post('/employee/leave/save-leave/{id}', 'LeaveController@saveLeave');
+Route::get('/employee/leave/edit-leave/{id}', 'LeaveController@editLeave');
+Route::patch('/employee/leave/update-leave/{id}', 'LeaveController@updateLeave');
 
 /*
 |--------------------------------------------------------------------------

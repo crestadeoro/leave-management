@@ -15,7 +15,7 @@ class PositionController extends Controller
 
     public function indexPosition()
     {
-    	return view('employee.position');
+    	return view('position.position');
     }
 
     /*

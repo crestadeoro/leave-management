@@ -75,10 +75,10 @@
                             href="/employee/list-employee">List of Employee</a>
                         <a class="collapse-item @if(Request::path() == 'employee/add-employee') active @endif"
                             href="/employee/add-employee">Add Employee</a>
-                        <a class="collapse-item @if(Request::path() == 'employee/division') active @endif"
-                            href="/employee/division">Division/Project</a>
-                        <a class="collapse-item @if(Request::path() == 'employee/position') active @endif"
-                            href="/employee/position">Position</a>
+                        <a class="collapse-item @if(Request::path() == 'division/division') active @endif"
+                            href="/division/division">Division/Project</a>
+                        <a class="collapse-item @if(Request::path() == 'division/position') active @endif"
+                            href="/position/position">Position</a>
                     </div>
                 </div>
             </li>

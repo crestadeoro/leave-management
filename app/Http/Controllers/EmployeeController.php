@@ -83,6 +83,7 @@ class EmployeeController extends Controller
 		$EmployeeDetail = DB::table('employees')
 								->join('divisions', 'employees.division', '=', 'divisions.id')
                                 ->join('positions', 'employees.position', '=', 'positions.id')
+                                ->orderBy('employees.lastname', 'asc')
                                 ->where('employees.status', '!=', 'duplicate')
 								->select(
                                     'employees.id',
@@ -226,17 +227,19 @@ class EmployeeController extends Controller
     
     public function getEmployeeLeave($id)
     {
-		$Leave = DB::table('leaves')
-                                ->where('leaves.employee_id', '=', $id)
+        $Leave = DB::table('leaves')
+                                ->orderBy('date_from', 'desc')
+                                ->where('employee_id', '=', $id)
 								->select(
-                                    'leaves.date_from',
-                                    'leaves.date_to',
-                                    'leaves.category'
+                                    'id',
+                                    'date_from',
+                                    'date_to',
+                                    'category'
 								)
                                 ->get();
                                 
         return $Leave;
-    }    
+    }  
 
     /*
     |--------------------------------------------------------------------------

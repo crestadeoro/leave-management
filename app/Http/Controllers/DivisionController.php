@@ -11,7 +11,7 @@ class DivisionController extends Controller
     {
         $Division = Division::all();
 
-        return view('employee.division', [
+        return view('division.division', [
             'Division' => $Division
         ]);
     }
