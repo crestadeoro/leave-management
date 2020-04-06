@@ -87,7 +87,7 @@
               </a>
           </li> 
 
-                      <!-- Division -->
+            <!-- Division -->
             <li class="nav-item">
               <a class="nav-link collapsed" href="/division/division">
                 <i class="fas fa-building"></i>
@@ -100,11 +100,11 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-file-alt"></i>
-                    <span>Reports</span>
+                    <span>Report</span>
                 </a>
-                <div id="collapseReport" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseReport" class="collapse @if(stripos(Request::path(), 'report') !== FALSE) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Employee</a>
+                        <a class="collapse-item @if(Request::path() == 'report/master-list') active @endif" href="/report/master-list">Employee</a>
                         <a class="collapse-item" href="#">Leave</a>
                     </div>
                 </div>

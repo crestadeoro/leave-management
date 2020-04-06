@@ -73,3 +73,11 @@ Route::patch('/employee/leave/update-leave/{id}', 'LeaveController@updateLeave')
 */
 
 Route::get('/leave-summary', 'LeaveController@summaryLeave');
+
+/*
+|--------------------------------------------------------------------------
+| Report
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/report/master-list', 'ReportController@employeeReport');
