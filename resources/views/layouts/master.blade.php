@@ -110,6 +110,20 @@
                 </div>
             </li>
 
+            <!-- Settings -->
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSetting"
+                  aria-expanded="true" aria-controls="collapseTwo">
+                  <i class="fas fa-cog"></i>
+                  <span>Settings</span>
+              </a>
+              <div id="collapseSetting" class="collapse @if(stripos(Request::path(), 'setting') !== FALSE) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                  <div class="bg-white py-2 collapse-inner rounded">
+                      <a class="collapse-item @if(Request::path() == 'setting/user/add-user') active @endif" href="/setting/user/add-user">Add User</a>
+                  </div>
+              </div>
+          </li>            
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

@@ -81,3 +81,11 @@ Route::get('/leave-summary', 'LeaveController@summaryLeave');
 */
 
 Route::get('/report/master-list', 'ReportController@employeeReport');
+
+/*
+|--------------------------------------------------------------------------
+| Setting
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/setting/user/add-user', 'SettingController@settingAddUser');
