@@ -33,7 +33,7 @@
                                 <th>Position</th>
                                 <th>Date Hired</th>
                                 <th>Status</th>
-                                <th>Birthday</th>
+                                <th>Contact Number</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -49,42 +49,16 @@
                                 <td>{{ strtoupper($EmployeeDetails->position) }}</td>
                                 <td>{{ date('F d, Y', strtotime($EmployeeDetails->date_hired)) }}</td>
                                 <td>{{ strtoupper($EmployeeDetails->status) }}</td>
-                                <td>{{ date('F d, Y', strtotime($EmployeeDetails->birthday)) }}</td>
+                                <td>{{ $EmployeeDetails->contact_number }}</td>
                                 <td>
                                     <a href="/employee/view-employee/{{ $EmployeeDetails->id }}"
                                     class="btn btn-success btn-sm btn-circle" title="View Record"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn btn-danger btn-sm btn-circle" class="btn btn-secondary" title="Remove Duplicate" data-toggle="modal" data-target="#removeModal"><i class="fas fa-copy"></i></a>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="removeModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="removeModalLabel">Remove Duplicate Record</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want delete this record?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <form action="/employee/remove-duplicate/{{ $EmployeeDetails->id }}" method="POST">
-					{{ csrf_field() }}
-					<button type="submit" class="btn btn-danger">Delete</button>
-                </form>
             </div>
         </div>
     </div>

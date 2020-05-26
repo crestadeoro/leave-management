@@ -59,6 +59,7 @@ class EmployeeController extends Controller
             'lastname',
             'birthday',
             'address',
+            'contact_number',
             'date_hired',
             'division',
             'position',
@@ -92,6 +93,7 @@ class EmployeeController extends Controller
                                     'employees.middlename',
                                     'employees.lastname',
                                     'employees.birthday',
+                                    'employees.contact_number',
                                     'employees.date_hired',
                                     'employees.status',
                                     'divisions.division',
@@ -172,6 +174,7 @@ class EmployeeController extends Controller
             'lastname',
             'birthday',
             'address',
+            'contact_number',
             'date_hired',
             'division',
             'position',
@@ -205,6 +208,7 @@ class EmployeeController extends Controller
                                     'employees.lastname',
                                     'employees.birthday',
                                     'employees.address',
+                                    'employees.contact_number',
                                     'employees.date_hired',
                                     'employees.sss',
                                     'employees.philhealth',
@@ -239,7 +243,7 @@ class EmployeeController extends Controller
                                 ->get();
                                 
         return $Leave;
-    }  
+    }
 
     /*
     |--------------------------------------------------------------------------

@@ -19,7 +19,7 @@
 
 <div class="row">
     <!-- Add Employee -->
-    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="card shadow mb-4">
             <!-- Card Header -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -81,7 +81,7 @@
                             </div>                                                                                    
                         </div>
                         <div class="row">
-                            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <label for="birthday">Birthday</label>
                                 <input type="date" class="form-control @error('birthday') is-invalid @enderror"
                                     id="birthday" name="birthday" value="{{ old('birthday') }}">
@@ -92,7 +92,18 @@
                                 </span>
                                 @enderror
                             </div>
-                            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <label for="contact_number">Contact Number</label>
+                                <input type="text" class="form-control @error('contact_number') is-invalid @enderror"
+                                    id="contact_number" name="contact_number" value="{{ old('contact_number') }}">
+    
+                                @error('contact_number')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <label for="date_hired">Date Hired</label>
                                 <input type="date" class="form-control @error('date_hired') is-invalid @enderror"
                                     id="date_hired" name="date_hired" value="{{ old('date_hired') }}">

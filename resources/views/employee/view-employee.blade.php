@@ -65,6 +65,12 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
+                        <label>Contact Number:</label>
+                        <span>{{ $Employee->contact_number }}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
                         <label>Birthday:</label>
                         <span>{{ date('F d, Y', strtotime($Employee->birthday)) }}</span>
                     </div>
