@@ -85,7 +85,8 @@ class EmployeeController extends Controller
 								->join('divisions', 'employees.division', '=', 'divisions.id')
                                 ->join('positions', 'employees.position', '=', 'positions.id')
                                 ->orderBy('employees.lastname', 'asc')
-                                ->where('employees.status', '!=', 'duplicate')
+                                ->where('employees.status', '!=', 'resigned')
+                                ->where('employees.status', '!=', 'removed')
 								->select(
                                     'employees.id',
                                     'employees.employee_id',
@@ -190,6 +191,30 @@ class EmployeeController extends Controller
 
     /*
     |--------------------------------------------------------------------------
+    | Update Employee Status
+    |--------------------------------------------------------------------------
+    */
+
+    public function updateEmployeeStatus(Employee $id, $status)
+    {
+        if($status == 'resigned')
+        {
+            $EmployeeStatus = Employee::where('id', $id->id)
+                                    ->update(['status' => $status]);                       
+
+            return redirect()->action('EmployeeController@viewEmployee', $id->id)->with('success', 'Employee Status successfully updated!');
+        } 
+        else
+        {
+            $EmployeeStatus = Employee::where('id', $id->id)
+                                    ->update(['status' => $status]);                        
+
+            return redirect()->action('EmployeeController@listEmployee')->with('success', 'Employee successfully removed!');                        
+        }
+    }    
+
+    /*
+    |--------------------------------------------------------------------------
     | Fetch Employee Detail From Database
     |--------------------------------------------------------------------------
     */
@@ -269,20 +294,5 @@ class EmployeeController extends Controller
         $Position = Position::orderBy('position', 'asc')->get();
 
         return $Position;
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Remove Duplicate Employee
-    |--------------------------------------------------------------------------
-    */    
-
-    public function removeDuplicateEmployee(Employee $id)
-    {
-        DB::table('employees')
-            ->where('id', $id->id)
-            ->update(['status' => 'duplicate']);
-
-        return redirect()->action('EmployeeController@listEmployee')->with('success', 'Duplicate Record successfully removed!');       
     }
 }

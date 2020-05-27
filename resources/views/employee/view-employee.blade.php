@@ -34,6 +34,8 @@
                         aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Action:</div>
                         <a class="dropdown-item" href="/employee/edit-employee/{{ $Employee->id }}">Edit</a>
+                        <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
+                            data-target="#statusModal">Update Status</a>
                     </div>
                 </div>
             </div>
@@ -89,7 +91,7 @@
                     <div class="col-md-6 col-xs-6">
                         <label>PhilHealth:</label>
                         <span>{{ $Employee->philhealth }}</span>
-                    </div>                    
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-xs-6">
@@ -99,8 +101,8 @@
                     <div class="col-md-6 col-xs-6">
                         <label>TIN:</label>
                         <span>{{ $Employee->tin }}</span>
-                    </div>                    
-                </div>               
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
                         <label>Employment Status:</label>
@@ -141,24 +143,52 @@
                         </thead>
                         <tbody>
                             @foreach($Leave as $Leaves)
-                                <tr>
-                                    <td>{{ date('F d, Y', strtotime($Leaves->date_from)) }}</td>
-                                    <td>{{ date('F d, Y', strtotime($Leaves->date_to)) }}</td>
-                                    <td>
-                                        @if($Leaves->category == 'paid')
-                                            <span class="badge badge-primary">{{ strtoupper($Leaves->category) }}</span>
-                                        @else
-                                            <span class="badge badge-danger">{{ strtoupper($Leaves->category) }}</span>
-                                        @endif
-                                    </td>
-                                    <td><a href="/employee/leave/edit-leave/{{ $Leaves->id }}"
-                                        class="btn btn-success btn-sm btn-circle" title="Edit Leave"><i class="fas fa-pencil-alt"></i></a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>{{ date('F d, Y', strtotime($Leaves->date_from)) }}</td>
+                                <td>{{ date('F d, Y', strtotime($Leaves->date_to)) }}</td>
+                                <td>
+                                    @if($Leaves->category == 'paid')
+                                    <span class="badge badge-primary">{{ strtoupper($Leaves->category) }}</span>
+                                    @else
+                                    <span class="badge badge-danger">{{ strtoupper($Leaves->category) }}</span>
+                                    @endif
+                                </td>
+                                <td><a href="/employee/leave/edit-leave/{{ $Leaves->id }}"
+                                        class="btn btn-success btn-sm btn-circle" title="Edit Leave"><i
+                                            class="fas fa-pencil-alt"></i></a>
+                                </td>
+                            </tr>
                             @endforeach
-                        </tbody>                        
+                        </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Update Status Modal -->
+<div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Status</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-6">
+                        <a class="btn btn-sm btn-warning" href="/employee/update-status/{{ $Employee->id }}/resigned">Resign</a>
+                    </div>
+                    <div class="col-sm-12 col-lg-6">
+                        <a class="btn btn-sm btn-secondary" href="/employee/update-status/{{ $Employee->id }}/removed">Remove</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
             </div>
         </div>
     </div>
