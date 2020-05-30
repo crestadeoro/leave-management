@@ -73,8 +73,18 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
+                        <label>Gender:</label>
+                        <span>{{ strtoupper($Employee->gender) }}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
                         <label>Birthday:</label>
                         <span>{{ date('F d, Y', strtotime($Employee->birthday)) }}</span>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        <label>Birthday:</label>
+                        <span>{{ $Age }}</span>
                     </div>
                 </div>
                 <div class="row">
@@ -180,10 +190,10 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-sm-12 col-lg-6">
+                    <div class="form-group col-sm-6 col-lg-6">
                         <a class="btn btn-sm btn-warning" href="/employee/update-status/{{ $Employee->id }}/resigned">Resign</a>
                     </div>
-                    <div class="col-sm-12 col-lg-6">
+                    <div class="form-group col-sm-6 col-lg-6">
                         <a class="btn btn-sm btn-secondary" href="/employee/update-status/{{ $Employee->id }}/removed">Remove</a>
                     </div>
                 </div>

@@ -103,18 +103,24 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                            </div>
+                            </div> 
                             <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                <label for="date_hired">Date Hired</label>
-                                <input type="date" class="form-control @error('date_hired') is-invalid @enderror"
-                                    id="date_hired" name="date_hired" value="{{ $Employee->date_hired }}">
+                                <label for="gender">Gender</label>
+                                <select class="form-control @error('gender') is-invalid @enderror" id="gender"
+                                name="gender">
+                                    <option value="">SELECT</option>
+                                    <option value="female" @if($Employee->gender == 'female') selected
+                                        @endif>FEMALE</option>
+                                    <option value="male" @if($Employee->gender == 'male') selected
+                                        @endif>MALE</option>
+                                </select>
     
-                                @error('date_hired')
+                                @error('gender')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                            </div>                                                                                    
+                            </div>                                                                                   
                         </div>
                         <div class="row">
                             <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -176,7 +182,18 @@
                             </div>                                                                                    
                         </div>                                                
                         <div class="row">
-                            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <label for="date_hired">Date Hired</label>
+                                <input type="date" class="form-control @error('date_hired') is-invalid @enderror"
+                                    id="date_hired" name="date_hired" value="{{ $Employee->date_hired }}">
+    
+                                @error('date_hired')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <label for="division">Division/Project</label>
                                 <select class="form-control @error('division') is-invalid @enderror" id="division"
                                 name="division">
@@ -193,7 +210,7 @@
                                 </span>
                                 @enderror
                             </div>
-                            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <label for="position">Position</label>
                                 <select class="form-control @error('position') is-invalid @enderror" id="position"
                                 name="position">

@@ -42,6 +42,7 @@ class EmployeeController extends Controller
             'lastname' 		    => 	'required',
 //            'birthday' 		    => 	'required',
             'address' 		    => 	'required',
+            'gender' 		    => 	'required',
             'date_hired' 		=> 	'required',
             'division' 		    => 	'required',
             'position' 		    => 	'required',
@@ -58,6 +59,7 @@ class EmployeeController extends Controller
             'middlename',
             'lastname',
             'birthday',
+            'gender',
             'address',
             'contact_number',
             'date_hired',
@@ -118,10 +120,13 @@ class EmployeeController extends Controller
         $Employee = $this->getEmployeeDetail($id->id);
 
         $Leave = $this->getEmployeeLeave($id->id);
+
+        $Age = $this->ageCalculator($id->birthday);
         
         return view('employee/view-employee', [
             'Employee' => $Employee,
-            'Leave' => $Leave
+            'Leave' => $Leave,
+            'Age' => $Age
         ]);
     }
 
@@ -158,6 +163,7 @@ class EmployeeController extends Controller
                 'lastname' 		    => 	'required',
 //               'birthday' 		    => 	'required',
                 'address' 		    => 	'required',
+                'gender' 		    => 	'required',
                 'date_hired' 		=> 	'required',
                 'division' 		    => 	'required',
                 'position' 		    => 	'required',
@@ -174,6 +180,7 @@ class EmployeeController extends Controller
             'middlename',
             'lastname',
             'birthday',
+            'gender',
             'address',
             'contact_number',
             'date_hired',
@@ -233,6 +240,7 @@ class EmployeeController extends Controller
                                     'employees.lastname',
                                     'employees.birthday',
                                     'employees.address',
+                                    'employees.gender',
                                     'employees.contact_number',
                                     'employees.date_hired',
                                     'employees.sss',
@@ -295,4 +303,14 @@ class EmployeeController extends Controller
 
         return $Position;
     }
+
+	/*
+	|---------------------------------------------------
+	| Client Age Calculator
+	|---------------------------------------------------
+	*/
+    public function ageCalculator($age)
+    {	
+		return $age = Carbon::parse($age)->age;
+	}    
 }
