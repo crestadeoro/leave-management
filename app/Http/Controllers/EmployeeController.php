@@ -248,6 +248,13 @@ class EmployeeController extends Controller
                                     'employees.hdmf',
                                     'employees.tin',
                                     'employees.status',
+                                    'employees.bank_name',
+                                    'employees.bank_account',
+                                    'employees.basic_rate',
+                                    'employees.rata',
+                                    'employees.pera',
+                                    'employees.meal_allowance',
+                                    'employees.project_allowance',
                                     'divisions.division',
                                     'positions.position'
 								)
