@@ -192,13 +192,54 @@
                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                         aria-labelledby="dropdownMenuLink">
                         <div class="dropdown-header">Action:</div>
-                        <a class="dropdown-item" href="/employee/leave/add-leave/{{ $Employee->id }}">Add Payroll Detail</a>
+                        <a class="dropdown-item" href="/employee/payroll/add-payroll-detail/{{ $Employee->id }}">Updte Payroll Detail</a>
                     </div>
                 </div>
             </div>
             <!-- Card Body -->
             <div class="card-body">
-
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <label>Bank Name:</label>
+                        <span>{{ $Employee->bank_name }}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <label>Bank Account:</label>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <label>Basic Rate:</label>
+                        <span>{{ $Employee->bank_account }}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <label>RATA:</label>
+                        <span>{{ $Employee->rata }}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <label>PERA:</label>
+                        <span>{{ $Employee->pera }}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <label>Meal Allowance:</label>
+                        <span>{{ $Employee->meal_allowance }}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <label>Project Allowance:</label>
+                        <span>{{ $Employee->project_allowance }}</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>   

@@ -222,6 +222,21 @@ class EmployeeController extends Controller
 
     /*
     |--------------------------------------------------------------------------
+    | Add Employee Payroll Detail
+    |--------------------------------------------------------------------------
+    */    
+
+    public function addPayrollDetail(Employee $id)
+    {
+        $Employee = $this->getEmployeeDetail($id->id);
+
+        return view('employee.payroll.add-payroll-detail', [
+            'Employee' => $Employee
+        ]);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
     | Fetch Employee Detail From Database
     |--------------------------------------------------------------------------
     */
