@@ -1,6 +1,6 @@
 @extends('layouts/master')
 
-@section('title', 'Add Payrol')
+@section('title', 'Edit Payroll Detail')
 
 @section('extended css')
 <style type="text/css">
@@ -39,9 +39,9 @@
                                 <label for="bank_name">Bank Name</label>
                                 <select class="form-control @error('bank_name') is-invalid @enderror" id="bank_name"
                                 name="bank_name" autofocus>
-                                    <option value="N/A" @if($Employee->bank_name == 'N/A' || $Employee->bank_name == '') selected @endif>SELECT</option>
-                                    <option value="EastWest Bank" @if($Employee->bank_name == 'EastWest Bank') selected @endif>East West Bank</option>
-                                    <option value="Robinson Bank" @if($Employee->bank_name == 'Robinson Bank') selected @endif>Robinson Bank</option>
+                                    <option value="N/A">SELECT</option>
+                                    <option value="EastWest Bank" @if(old('bank_name') == 'paid') selected @endif>East West Bank</option>
+                                    <option value="Robinson Bank" @if(old('bank_name') == 'unpaid') selected @endif>Robinson Bank</option>
                                 </select>
 
                                 @error('bank_name')
@@ -53,7 +53,7 @@
                             <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="bank_account">Bank Account</label>
                                 <input type="text" class="form-control @error('bank_account') is-invalid @enderror"
-                                    id="bank_account" name="bank_account" value="{{ $Employee->bank_account }}">
+                                    id="bank_account" name="bank_account">
 
                                 @error('bank_account')
                                 <span class="invalid-feedback" role="alert">
@@ -66,7 +66,7 @@
                             <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <label for="basic_rate">Basic Rate</label>
                                 <input type="number" class="form-control @error('basic_rate') is-invalid @enderror"
-                                    id="basic_rate" name="basic_rate" value="{{ $Employee->basic_rate }}">
+                                    id="basic_rate" name="basic_rate">
 
                                 @error('basic_rate')
                                 <span class="invalid-feedback" role="alert">
@@ -77,7 +77,7 @@
                             <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <label for="rata">RATA</label>
                                 <input type="number" class="form-control @error('rata') is-invalid @enderror"
-                                    id="rata" name="rata" {{ $Employee->rata }}>
+                                    id="rata" name="rata">
 
                                 @error('rata')
                                 <span class="invalid-feedback" role="alert">
@@ -88,7 +88,7 @@
                             <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <label for="pera">PERA</label>
                                 <input type="number" class="form-control @error('pera') is-invalid @enderror"
-                                    id="pera" name="pera" {{ $Employee->pera }}>
+                                    id="pera" name="pera">
 
                                 @error('pera')
                                 <span class="invalid-feedback" role="alert">
@@ -101,7 +101,7 @@
                             <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="meal_allowance">Meal Allowance</label>
                                 <input type="number" class="form-control @error('meal_allowance') is-invalid @enderror"
-                                    id="meal_allowance" name="meal_allowance" {{ $Employee->meal_allowance }}>
+                                    id="meal_allowance" name="meal_allowance">
 
                                 @error('meal_allowance')
                                 <span class="invalid-feedback" role="alert">
@@ -112,7 +112,7 @@
                             <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="project_allowance">Project Allowance</label>
                                 <input type="number" class="form-control @error('project_allowance') is-invalid @enderror"
-                                    id="project_allowance" name="project_allowance" {{ $Employee->project_allowance }}>
+                                    id="project_allowance" name="project_allowance">
 
                                 @error('project_allowance')
                                 <span class="invalid-feedback" role="alert">

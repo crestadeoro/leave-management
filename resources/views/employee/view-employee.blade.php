@@ -207,37 +207,37 @@
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
                         <label>Bank Account:</label>
-                        <span></span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 col-xs-12">
-                        <label>Basic Rate:</label>
                         <span>{{ $Employee->bank_account }}</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
+                        <label>Basic Rate:</label>
+                        <span>{{ number_format($Employee->basic_rate, 2) }}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
                         <label>RATA:</label>
-                        <span>{{ $Employee->rata }}</span>
+                        <span>{{ number_format($Employee->rata, 2) }}</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
                         <label>PERA:</label>
-                        <span>{{ $Employee->pera }}</span>
+                        <span>{{ number_format($Employee->pera, 2) }}</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
                         <label>Meal Allowance:</label>
-                        <span>{{ $Employee->meal_allowance }}</span>
+                        <span>{{ number_format($Employee->meal_allowance, 2) }}</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-xs-12">
                         <label>Project Allowance:</label>
-                        <span>{{ $Employee->project_allowance }}</span>
+                        <span>{{ number_format($Employee->project_allowance, 2) }}</span>
                     </div>
                 </div>
             </div>

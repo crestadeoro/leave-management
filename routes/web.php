@@ -33,6 +33,7 @@ Route::get('/employee/edit-employee/{id}', 'EmployeeController@editEmployee');
 Route::patch('/employee/update-employee/{id}', 'EmployeeController@updateEmployee');
 Route::get('/employee/update-status/{id}/{status}', 'EmployeeController@updateEmployeeStatus');
 Route::get('/employee/payroll/add-payroll-detail/{id}', 'EmployeeController@addPayrollDetail');
+Route::post('/employee/payroll/save-payroll-detail/{id}', 'EmployeeController@savePayrollDetail');
 
 /*
 |--------------------------------------------------------------------------

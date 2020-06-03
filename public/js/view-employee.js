@@ -1,0 +1,1 @@
+var format = new Intl.NumberFormat('en-US');

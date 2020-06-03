@@ -237,6 +237,27 @@ class EmployeeController extends Controller
 
     /*
     |--------------------------------------------------------------------------
+    | Save Employee Payroll Detail
+    |--------------------------------------------------------------------------
+    */  
+    
+    public function savePayrollDetail(Employee $id)
+    {
+        $id->update(request([
+            'bank_name',
+            'bank_account',
+            'basic_rate',
+            'rata',
+            'pera',
+            'meal_allowance',
+            'project_allowance'
+        ]));
+        
+        return redirect()->action('EmployeeController@viewEmployee', $id->id)->with('success', 'Payroll Detail successfully updated!');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
     | Fetch Employee Detail From Database
     |--------------------------------------------------------------------------
     */
