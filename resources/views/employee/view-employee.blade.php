@@ -119,6 +119,29 @@
                         <span>{{ strtoupper($Employee->status) }}</span>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <label>Person to contact in case of emergency:</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <label>Name:</label>
+                        <span>{{ strtoupper($Employee->ptc_name) }}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <label>Contact Number:</label>
+                        <span>{{ strtoupper($Employee->ptc_number) }}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <label>Address:</label>
+                        <span>{{ strtoupper($Employee->ptc_address) }}</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

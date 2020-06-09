@@ -190,6 +190,9 @@ class EmployeeController extends Controller
             'philhealth',
             'hdmf',
             'tin',
+            'ptc_name',
+            'ptc_number',
+            'ptc_address',
             'status'         
         ]));
 
@@ -291,6 +294,9 @@ class EmployeeController extends Controller
                                     'employees.pera',
                                     'employees.meal_allowance',
                                     'employees.project_allowance',
+                                    'employees.ptc_name',
+                                    'employees.ptc_number',
+                                    'employees.ptc_address',
                                     'divisions.division',
                                     'positions.position'
 								)

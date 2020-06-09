@@ -8,6 +8,9 @@
         text-transform: uppercase;
     }
 
+    label {
+        font-weight: bold;
+    }
 </style>
 @endsection
 
@@ -247,7 +250,31 @@
                                 </span>
                                 @enderror
                             </div>                                                                                   
-                        </div>                                                                        
+                        </div>  
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label>Person to contact in case of emergency:</label>
+                            </div>
+                        </div>   
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <label for="ptc_name">Name</label>
+                                <input type="text" class="form-control @error('ptc_name') is-invalid @enderror"
+                                    id="ptc_name" name="ptc_name" value="{{ $Employee->ptc_name }}">
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <label for="ptc_number">Contact Number</label>
+                                <input type="text" class="form-control @error('ptc_number') is-invalid @enderror"
+                                    id="ptc_number" name="ptc_number" value="{{ $Employee->ptc_number }}">
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <label for="ptc_address">Address</label>
+                                <input type="text" class="form-control @error('ptc_address') is-invalid @enderror"
+                                    id="ptc_address" name="ptc_address" value="{{ $Employee->ptc_address }}">
+                            </div>
+                        </div>                                                                    
                         <button type="submit" class="btn btn-success">Submit</button>
                     </form>
                 </div>
