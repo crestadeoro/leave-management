@@ -114,9 +114,15 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12 col-xs-12">
-                        <label>Employment Status:</label>
+                    <div class="col-md-6 col-xs-6">
+                        <label>Status:</label>
                         <span>{{ strtoupper($Employee->status) }}</span>
+                    </div>
+                    <div class="col-md-6 col-xs-6">
+                        @if ($Employee->status == 'resigned')
+                            <label>Resigned Date:</label>
+                            <span>{{ date('F d, Y', strtotime($Employee->status_updated_at)) }}</span>
+                        @endif
                     </div>
                 </div>
                 <div class="row">
