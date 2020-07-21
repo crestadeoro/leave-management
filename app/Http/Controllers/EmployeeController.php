@@ -87,7 +87,6 @@ class EmployeeController extends Controller
 								->join('divisions', 'employees.division', '=', 'divisions.id')
                                 ->join('positions', 'employees.position', '=', 'positions.id')
                                 ->orderBy('employees.lastname', 'asc')
-                                ->where('employees.status', '!=', 'resigned')
                                 ->where('employees.status', '!=', 'removed')
 								->select(
                                     'employees.id',
@@ -209,9 +208,14 @@ class EmployeeController extends Controller
     {
         if($status == 'resigned')
         {
-            $EmployeeStatus = Employee::where('id', $id->id)
-                                    ->update(['status' => $status]);                       
+            $timestamp = now();
 
+            $EmployeeStatus = Employee::where('id', $id->id)
+                                    ->update([
+                                            'status' => $status,
+                                            'status_updated_at' => $timestamp
+                                            ]);                       
+                                    
             return redirect()->action('EmployeeController@viewEmployee', $id->id)->with('success', 'Employee Status successfully updated!');
         } 
         else
@@ -287,6 +291,7 @@ class EmployeeController extends Controller
                                     'employees.hdmf',
                                     'employees.tin',
                                     'employees.status',
+                                    'employees.status_updated_at',
                                     'employees.bank_name',
                                     'employees.bank_account',
                                     'employees.basic_rate',
