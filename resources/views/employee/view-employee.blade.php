@@ -83,7 +83,7 @@
                         <span>{{ date('F d, Y', strtotime($Employee->birthday)) }}</span>
                     </div>
                     <div class="col-md-6 col-xs-12">
-                        <label>Birthday:</label>
+                        <label>Age:</label>
                         <span>{{ $Age }}</span>
                     </div>
                 </div>

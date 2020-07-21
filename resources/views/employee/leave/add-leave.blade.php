@@ -66,6 +66,7 @@
                                     <option value="">SELECT</option>
                                     <option value="paid" @if(old('category') == 'paid') selected @endif>PAID</option>
                                     <option value="unpaid" @if(old('category') == 'unpaid') selected @endif>UNPAID</option>
+                                    <option value="subsidy" @if(old('category') == 'subsidy') selected @endif>SUBSIDY</option>
                                 </select>
 
                                 @error('category')

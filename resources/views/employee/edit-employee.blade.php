@@ -302,6 +302,38 @@
 
 @section('extended js')
 <script type="text/javascript">
-    $('.toast').toast('show')
+    $('.toast').toast('show');
+
+    $("#sss").keyup(function () {
+        if ($(this).val().length == 2) {
+            $(this).val($(this).val() + "-");
+        } else if ($(this).val().length == 10) {
+            $(this).val($(this).val() + "-");
+        }
+    });
+
+    $("#philhealth").keyup(function () {
+        if ($(this).val().length == 2) {
+            $(this).val($(this).val() + "-");
+        } else if ($(this).val().length == 11) {
+            $(this).val($(this).val() + "-");
+        }
+    });
+
+    $("#hdmf").keyup(function () {
+        if ($(this).val().length == 4) {
+            $(this).val($(this).val() + "-");
+        } else if ($(this).val().length == 9) {
+            $(this).val($(this).val() + "-");
+        }
+    });
+
+    $("#tin").keyup(function () {
+        if ($(this).val().length == 3) {
+            $(this).val($(this).val() + "-");
+        } else if ($(this).val().length == 7) {
+            $(this).val($(this).val() + "-");
+        }
+    });
 </script>
 @endsection

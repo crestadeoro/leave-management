@@ -67,6 +67,7 @@
                                     <option value="">SELECT</option>
                                     <option value="paid" @if($Leave->category == 'paid') selected @endif>PAID</option>
                                     <option value="unpaid" @if($Leave->category == 'unpaid') selected @endif>UNPAID</option>
+                                    <option value="subsidy" @if($Leave->category == 'subsidy') selected @endif>SUBSIDY</option>
                                 </select>
 
                                 @error('category')
