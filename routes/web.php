@@ -70,6 +70,17 @@ Route::patch('/employee/leave/update-leave/{id}', 'LeaveController@updateLeave')
 
 /*
 |--------------------------------------------------------------------------
+| PPE
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/employee/ppe/add-ppe/{id}', 'PpeController@indexPpe');
+Route::post('/employee/ppe/save-ppe/{id}', 'PpeController@savePpe');
+Route::get('/employee/ppe/edit-ppe/{id}', 'PpeController@editPpe');
+Route::patch('/employee/ppe/update-ppe/{id}', 'PpeController@updatePpe');
+
+/*
+|--------------------------------------------------------------------------
 | Leave Summary
 |--------------------------------------------------------------------------
 */
@@ -83,6 +94,7 @@ Route::get('/leave-summary', 'LeaveController@summaryLeave');
 */
 
 Route::get('/report/master-list', 'ReportController@employeeReport');
+Route::get('/report/leave', 'ReportController@employeeLeave');
 
 /*
 |--------------------------------------------------------------------------
@@ -91,3 +103,4 @@ Route::get('/report/master-list', 'ReportController@employeeReport');
 */
 
 Route::get('/setting/user/add-user', 'SettingController@settingAddUser');
+Route::post('/setting/user/save-user', 'SettingController@settingSaveUser');

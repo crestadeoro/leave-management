@@ -66,7 +66,7 @@
                             <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <label for="basic_rate">Basic Rate</label>
                                 <input type="number" class="form-control @error('basic_rate') is-invalid @enderror"
-                                    id="basic_rate" name="basic_rate" value="{{ $Employee->basic_rate }}">
+                                    id="basic_rate" name="basic_rate" step="any" value="{{ $Employee->basic_rate }}">
 
                                 @error('basic_rate')
                                 <span class="invalid-feedback" role="alert">
@@ -76,7 +76,7 @@
                             </div>
                             <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <label for="rata">RATA</label>
-                                <input type="number" class="form-control @error('rata') is-invalid @enderror"
+                                <input type="number" step="any" class="form-control @error('rata') is-invalid @enderror"
                                     id="rata" name="rata" {{ $Employee->rata }}>
 
                                 @error('rata')
@@ -87,7 +87,7 @@
                             </div>
                             <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <label for="pera">PERA</label>
-                                <input type="number" class="form-control @error('pera') is-invalid @enderror"
+                                <input type="number" step="any" class="form-control @error('pera') is-invalid @enderror"
                                     id="pera" name="pera" {{ $Employee->pera }}>
 
                                 @error('pera')
@@ -100,7 +100,7 @@
                         <div class="row">
                             <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="meal_allowance">Meal Allowance</label>
-                                <input type="number" class="form-control @error('meal_allowance') is-invalid @enderror"
+                                <input type="number" step="any" class="form-control @error('meal_allowance') is-invalid @enderror"
                                     id="meal_allowance" name="meal_allowance" {{ $Employee->meal_allowance }}>
 
                                 @error('meal_allowance')
@@ -111,7 +111,7 @@
                             </div> 
                             <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                 <label for="project_allowance">Project Allowance</label>
-                                <input type="number" class="form-control @error('project_allowance') is-invalid @enderror"
+                                <input type="number" step="any" class="form-control @error('project_allowance') is-invalid @enderror"
                                     id="project_allowance" name="project_allowance" {{ $Employee->project_allowance }}>
 
                                 @error('project_allowance')

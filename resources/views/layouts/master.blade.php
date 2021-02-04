@@ -105,7 +105,7 @@
                 <div id="collapseReport" class="collapse @if(stripos(Request::path(), 'report') !== FALSE) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item @if(Request::path() == 'report/master-list') active @endif" href="/report/master-list">Employee</a>
-                        <a class="collapse-item" href="#">Leave</a>
+                        <a class="collapse-item @if(Request::path() == 'report/leave') active @endif" href="/report/leave">Leave</a>
                     </div>
                 </div>
             </li>

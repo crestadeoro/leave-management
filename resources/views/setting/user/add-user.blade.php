@@ -66,11 +66,11 @@
             	<!-- Card Body -->
             	<div class="card-body">
             		<div class="form-area">
-                		<form method="POST" action="">
+                		<form method="POST" action="/setting/user/save-user">
                 			{{ csrf_field() }}
                 			<div class="form-group">
     							<label for="name">Name</label>
-    							<input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" autofocus>
+    							<input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" autofocus>
 
     							@error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -80,14 +80,51 @@
                               </div>
                               <div class="form-group">
     							<label for="username">Username</label>
-    							<input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" autofocus>
+    							<input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" value="{{ old('username') }}">
 
     							@error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-  							</div>                                
+							  </div>
+							  <div class="form-group">
+                                <label for="division">Division</label>
+                                <select class="form-control @error('division') is-invalid @enderror" id="division"
+                                    name="division">
+                                    <option value="">SELECT</option>
+                                    <option value="payroll" @if(old('division' )=='payroll' ) selected @endif>PAYROLL
+									</option>
+									<option value="motorpool" @if(old('division' )=='motorpool' ) selected @endif>MOTORPOOL
+									</option>
+									<option value="seafront townsite" @if(old('division' )=='seafront townsite' ) selected @endif>SEAFRONT TOWNSITE
+									</option>
+									<option value="subic grain" @if(old('division' )=='subic grain' ) selected @endif>SUBIC GRAIN
+									</option>
+									<option value="salomague" @if(old('division' )=='salomague' ) selected @endif>SALOMAGUE
+                                    </option>
+                                </select>
+
+                                @error('division')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>  
+							  <div class="form-group">
+    							<label for="password">Password</label>
+    							<input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
+
+    							@error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+							  </div>
+							  <div class="form-group">
+    							<label for="password-confirm">Confirm Password</label>
+    							<input type="password" class="form-control" id="password" name="password_confirmation">
+							  </div>                             
   							<button type="submit" class="btn btn-success">Submit</button>
                 		</form>
               		</div>
