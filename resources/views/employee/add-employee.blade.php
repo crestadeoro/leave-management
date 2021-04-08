@@ -23,7 +23,7 @@
         <div class="card shadow mb-4">
             <!-- Card Header -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-warning">Add Employee</h6>
+                <h6 class="m-0 font-weight-bold text-warning">Employee Basic Information</h6>
                 <div class="dropdown no-arrow">
                 </div>
             </div>
@@ -228,7 +228,7 @@
                         </div>
                         <div class="row">
                             <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <label for="status">Status</label>
+                                <label for="status">Employment Status</label>
                                 <select class="form-control @error('status') is-invalid @enderror" id="status"
                                     name="status">
                                     <option value="">SELECT</option>

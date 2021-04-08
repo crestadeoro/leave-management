@@ -93,13 +93,13 @@ class EmployeeController extends Controller
 
         request()->validate([
 
-			'employee_id' 		=> 	'required',
+			'employee_id' 		=> 	'required|unique:employees',
 
             'firstname' 		=> 	'required',
 
             'lastname' 		    => 	'required',
 
-//            'birthday' 		    => 	'required',
+            'birthday' 		    => 	'required',
 
             'address' 		    => 	'required',
 
