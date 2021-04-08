@@ -93,7 +93,7 @@ class EmployeeController extends Controller
 
         request()->validate([
 
-//            'employee_id' 		=> 	'required',
+			'employee_id' 		=> 	'required',
 
             'firstname' 		=> 	'required',
 
@@ -339,7 +339,7 @@ class EmployeeController extends Controller
 
         request()->validate([
 
-//              'employee_id' 		=> 	'required',
+	             'employee_id' 		=> 	'required',
 
                 'firstname' 		=> 	'required',
 
@@ -667,9 +667,9 @@ class EmployeeController extends Controller
 
                                 ->where('employee_id', '=', $id)
                                 
-                                ->where('date_from', '<', '01-31-2021')
+                                ->where('date_from', '>=', '2021-01-01')
 
-                                ->where('date_to', '<', '01-31-2021')
+                                ->where('date_to', '>=', '2021-01-01')
 
 								->select(
 
