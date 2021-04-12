@@ -93,7 +93,64 @@
                                 @enderror
                             </div>
                             <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                <label for="contact_number">Contact Number</label>
+                                <label for="gender">Gender</label>
+                                <select class="form-control @error('gender') is-invalid @enderror" id="gender"
+                                    name="gender">
+                                    <option value="">SELECT</option>
+                                    <option value="female" @if(old('gender' )=='female' ) selected @endif>FEMALE
+                                    </option>
+                                    <option value="male" @if(old('gender' )=='male' ) selected @endif>Male</option>
+                                </select>
+
+                                @error('gender')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <label for="civil_status">Civil Status</label>
+                                <select class="form-control @error('civil_status') is-invalid @enderror" id="civil_status"
+                                    name="civil_status">
+                                    <option value="">SELECT</option>
+                                    <option value="single" @if(old('civil_status' )=='single' ) selected @endif>SINGLE</option>
+                                    <option value="married" @if(old('civil_status' )=='married' ) selected @endif>MARRIED</option>
+                                    <option value="widowed" @if(old('civil_status' )=='widowed' ) selected @endif>WIDOWED</option>
+                                    <option value="separated" @if(old('civil_status' )=='separated' ) selected @endif>SEPARATED</option>
+                                </select>
+
+                                @error('civil_status')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <label for="email_address">Email Address</label>
+                                <input type="email" class="form-control @error('email_address') is-invalid @enderror"
+                                    id="email_address" name="email_address" value="{{ old('email_address') }}">
+
+                                @error('email_address')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <label for="telephone_number">Telephone Number</label>
+                                <input type="text" class="form-control @error('telephone_number') is-invalid @enderror"
+                                    id="telephone_number" name="telephone_number" value="{{ old('telephone_number') }}">
+
+                                @error('telephone_number')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <label for="contact_number">Mobile Number</label>
                                 <input type="text" class="form-control @error('contact_number') is-invalid @enderror"
                                     id="contact_number" name="contact_number" value="{{ old('contact_number') }}">
 
@@ -103,15 +160,6 @@
                                 </span>
                                 @enderror
                             </div>
-                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                <label for="gender">Gender</label>
-                                <select class="form-control @error('gender') is-invalid @enderror" id="gender"
-                                    name="gender">
-                                    <option value="">SELECT</option>
-                                    <option value="female" @if(old('gender' )=='female' ) selected @endif>FEMALE
-                                    </option>
-                                    <option value="male" @if(old('gender' )=='male' ) selected @endif>Male</option>
-                                </select>
 
                                 @error('gender')
                                 <span class="invalid-feedback" role="alert">

@@ -104,6 +104,8 @@ class EmployeeController extends Controller
             'address' 		    => 	'required',
 
             'gender' 		    => 	'required',
+            
+            'civil_status' 		=> 	'required',
 
             'date_hired' 		=> 	'required',
 
@@ -143,6 +145,12 @@ class EmployeeController extends Controller
 
             'contact_number',
 
+            'civil_status',
+
+            'email_address',
+
+            'telephone_number',
+
             'date_hired',
 
             'division',
@@ -160,8 +168,6 @@ class EmployeeController extends Controller
             'status'
 
         ]));
-
-        
 
         return redirect()->action('EmployeeController@indexEmployee')->with('success', 'New Employee successfully saved!');
 
@@ -266,6 +272,36 @@ class EmployeeController extends Controller
         $Age = $this->ageCalculator($id->birthday);
 
         
+        $Relative = $this->getRelativeDetail($id->id);
+
+        if($Relative == null)
+        {
+            $MotherMaidenName = "";
+            $MotherOccupation = "";
+            $MotherCompany = "";
+            
+            $FatherName = "";
+            $FatherOccupation = "";
+            $FatherCompany = "";
+
+            $SpouseName = "";
+            $SpouseOccupation = "";
+            $SpouseCompany = "";
+        }    
+        else
+        {
+            $MotherMaidenName = $Relative->mother_maiden_name;
+            $MotherOccupation = $Relative->mother_occupation;
+            $MotherCompany = $Relative->mother_name_of_company;
+            
+            $FatherName = $Relative->father_name;
+            $FatherOccupation = $Relative->father_occupation;
+            $FatherCompany = $Relative->father_name_of_company;
+
+            $SpouseName = $Relative->spouse_name;
+            $SpouseOccupation = $Relative->spouse_occupation;
+            $SpouseCompany = $Relative->spouse_name_of_company;
+        }
 
         return view('employee/view-employee', [
 
@@ -275,7 +311,25 @@ class EmployeeController extends Controller
 
             'Age' => $Age,
 
-            'Ppe' => $Ppe
+            'Ppe' => $Ppe,
+
+            'MotherMaidenName' => $MotherMaidenName,
+
+            'MotherOccupation' => $MotherOccupation,
+
+            'MotherCompany' => $MotherCompany,
+
+            'FatherName' => $FatherName,
+
+            'FatherOccupation' => $FatherOccupation,
+
+            'FatherCompany' => $FatherCompany,
+
+            'SpouseName' => $SpouseName,
+
+            'SpouseOccupation' => $SpouseOccupation,
+
+            'SpouseCompany' => $SpouseCompany
 
         ]);
 
@@ -345,7 +399,7 @@ class EmployeeController extends Controller
 
                 'lastname' 		    => 	'required',
 
-//               'birthday' 		    => 	'required',
+                'birthday' 		    => 	'required',
 
                 'address' 		    => 	'required',
 
@@ -385,7 +439,13 @@ class EmployeeController extends Controller
 
             'gender',
 
+            'civil_status',
+
             'address',
+
+            'email_address',
+
+            'telephone_number',
 
             'contact_number',
 
@@ -402,12 +462,6 @@ class EmployeeController extends Controller
             'hdmf',
 
             'tin',
-
-            'ptc_name',
-
-            'ptc_number',
-
-            'ptc_address',
 
             'status'         
 
@@ -595,6 +649,12 @@ class EmployeeController extends Controller
 
                                     'employees.contact_number',
 
+                                    'employees.civil_status',
+
+                                    'employees.email_address',
+
+                                    'employees.telephone_number',
+
                                     'employees.date_hired',
 
                                     'employees.sss',
@@ -622,12 +682,6 @@ class EmployeeController extends Controller
                                     'employees.meal_allowance',
 
                                     'employees.project_allowance',
-
-                                    'employees.ptc_name',
-
-                                    'employees.ptc_number',
-
-                                    'employees.ptc_address',
 
                                     'divisions.division',
 
@@ -805,7 +859,38 @@ class EmployeeController extends Controller
 
 		return $age = Carbon::parse($age)->age;
 
-	}    
+	}  
+    
+    
+    /*
 
+    |--------------------------------------------------------------------------
+
+    | Fetch Employee Detail From Database
+
+    |--------------------------------------------------------------------------
+
+    */
+
+    public function getRelativeDetail($id)
+    {
+        $Relative = DB::table('employee_relative_details')
+                        ->where('employee_id', '=', $id)
+                        ->select
+                        (
+                            'mother_maiden_name',
+                            'mother_occupation',
+                            'mother_name_of_company',
+                            'father_name',
+                            'father_occupation',
+                            'father_name_of_company',
+                            'spouse_name',
+                            'spouse_occupation',
+                            'spouse_name_of_company'
+                        )
+                        ->first();
+
+        return $Relative;
+    }
 }
 

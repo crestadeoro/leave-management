@@ -35,10 +35,8 @@
 
 </div>
 
-
-
 <div class="row col-xs-12">
-
+    <!-- Employee Basic Informatio -->
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
         <div class="card shadow mb-4">
@@ -63,7 +61,7 @@
 
                         <div class="dropdown-header">Action:</div>
 
-                        <a class="dropdown-item" href="/employee/edit-employee/{{ $Employee->id }}">Edit</a>
+                        <a class="dropdown-item" href="/employee/edit-employee/{{ $Employee->id }}">Edit Basic Details</a>
 
                         <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
                             data-target="#statusModal">Update Status</a>
@@ -80,23 +78,19 @@
 
                 <div class="row">
 
-                    <div class="col-md-12 col-xs-12">
+                    <div class="col-md-6 col-xs-6">
 
-                        <label>Employee ID:</label>
+                        <label class="text-danger">Employee ID:</label>
 
                         <span>{{ $Employee->employee_id }}</span>
 
                     </div>
 
-                </div>
+                    <div class="col-md-6 col-xs-6">
 
-                <div class="row">
+                        <label class="text-danger">Date Hired:</label>
 
-                    <div class="col-md-12 col-xs-12">
-
-                        <label>Division:</label>
-
-                        <span>{{ strtoupper($Employee->division) }}</span>
+                        <span>{{ date('F d, Y', strtotime($Employee->date_hired)) }}</span>
 
                     </div>
 
@@ -104,9 +98,17 @@
 
                 <div class="row">
 
-                    <div class="col-md-12 col-xs-12">
+                    <div class="col-md-6 col-xs-6">
 
-                        <label>Position:</label>
+                        <label class="text-danger">Division:</label>
+
+                        <span>{{ strtoupper($Employee->division) }}</span>
+
+                    </div>
+
+                    <div class="col-md-6 col-xs-6">
+
+                        <label class="text-danger">Position:</label>
 
                         <span>{{ strtoupper($Employee->position) }}</span>
 
@@ -118,33 +120,51 @@
 
                     <div class="col-md-12 col-xs-12">
 
-                        <label>Date Hired:</label>
+                        <label class="text-danger">Employment Status:</label>
 
-                        <span>{{ date('F d, Y', strtotime($Employee->date_hired)) }}</span>
+                        <span>{{ strtoupper($Employee->status) }}</span>
 
                     </div>
 
                 </div>
 
+                <hr>
+
                 <div class="row">
 
-                    <div class="col-md-12 col-xs-12">
+                    <div class="col-md-6 col-xs-6">
 
-                        <label>Contact Number:</label>
+                        <label class="text-warning">Mobile Number:</label>
 
                         <span>{{ $Employee->contact_number }}</span>
 
                     </div>
 
+                    <div class="col-md-6 col-xs-6">
+
+                        <label class="text-warning">Telephone Number:</label>
+
+                        <span>{{ $Employee->telephone_number }}</span>
+
+                    </div>
+
                 </div>
 
                 <div class="row">
 
-                    <div class="col-md-12 col-xs-12">
+                    <div class="col-md-6 col-xs-6">
 
-                        <label>Gender:</label>
+                        <label class="text-warning">Gender:</label>
 
                         <span>{{ strtoupper($Employee->gender) }}</span>
+
+                    </div>
+
+                    <div class="col-md-6 col-xs-6">
+
+                        <label class="text-warning">Civil Status:</label>
+
+                        <span>{{ $Employee->civil_status }}</span>
 
                     </div>
 
@@ -154,7 +174,7 @@
 
                     <div class="col-md-6 col-xs-12">
 
-                        <label>Birthday:</label>
+                        <label class="text-warning">Birthday:</label>
 
                         <span>{{ date('F d, Y', strtotime($Employee->birthday)) }}</span>
 
@@ -162,7 +182,7 @@
 
                     <div class="col-md-6 col-xs-12">
 
-                        <label>Age:</label>
+                        <label class="text-warning">Age:</label>
 
                         <span>{{ $Age }}</span>
 
@@ -174,13 +194,27 @@
 
                     <div class="col-md-12 col-xs-12">
 
-                        <label>Address:</label>
+                        <label class="text-warning">Email Address:</label>
+
+                        <span>{{ $Employee->email_address }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label class="text-warning">Address:</label>
 
                         <span>{{ strtoupper($Employee->address) }}</span>
 
                     </div>
 
                 </div>
+
+                <hr>
 
                 <div class="row">
 
@@ -217,64 +251,6 @@
                         <label>TIN:</label>
 
                         <span>{{ $Employee->tin }}</span>
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-12 col-xs-12">
-
-                        <label>Employment Status:</label>
-
-                        <span>{{ strtoupper($Employee->status) }}</span>
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-12 col-xs-12">
-
-                        <label>Person to contact in case of emergency:</label>
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-12 col-xs-12">
-
-                        <label>Name:</label>
-
-                        <span>{{ strtoupper($Employee->ptc_name) }}</span>
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-12 col-xs-12">
-
-                        <label>Contact Number:</label>
-
-                        <span>{{ strtoupper($Employee->ptc_number) }}</span>
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-12 col-xs-12">
-
-                        <label>Address:</label>
-
-                        <span>{{ strtoupper($Employee->ptc_address) }}</span>
 
                     </div>
 
@@ -403,12 +379,166 @@
 </div>
 
 
-
-<!-- Payroll Detail -->
-
 <div class="row col-xs-12">
 
+    <!-- Employee Relative Details -->
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+        <div class="card shadow mb-4">
+
+            <!-- Card Header -->
+
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+
+                <h6 class="m-0 font-weight-bold text-primary">Employee Relative Information</h6>
+
+                <div class="dropdown no-arrow">
+
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                        aria-labelledby="dropdownMenuLink">
+
+                        <div class="dropdown-header">Action:</div>
+
+                        <a class="dropdown-item" href="/employee/employee-relative/{{ $Employee->id }}">Add/Edit Relative Details</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Card Body -->
+
+            <div class="card-body">
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Mother's Maiden Name:</label>
+
+                        <span>{{ strtoupper($MotherMaidenName) }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Occupation:</label>
+
+                        <span>{{ strtoupper($MotherOccupation) }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Company Name:</label>
+
+                        <span>{{ strtoupper($MotherCompany) }}</span>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Father's Maiden Name:</label>
+
+                        <span>{{ strtoupper($FatherName) }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Occupation:</label>
+
+                        <span>{{ strtoupper($FatherOccupation) }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Company Name:</label>
+
+                        <span>{{ strtoupper($FatherCompany) }}</span>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Spouse's Name:</label>
+
+                        <span>{{ strtoupper($SpouseName) }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Occupation:</label>
+
+                        <span>{{ strtoupper($SpouseOccupation) }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Company Name:</label>
+
+                        <span>{{ strtoupper($SpouseCompany) }}</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Payroll Detail -->
+
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" hidden>
 
         <div class="card shadow mb-4">
 
@@ -535,7 +665,7 @@
 
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" hidden>
 
         <div class="card shadow mb-4">
 

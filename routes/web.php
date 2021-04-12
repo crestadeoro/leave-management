@@ -37,6 +37,16 @@ Route::post('/employee/payroll/save-payroll-detail/{id}', 'EmployeeController@sa
 
 /*
 |--------------------------------------------------------------------------
+| Employee Relative Details
+|--------------------------------------------------------------------------
+*/
+Route::get('/employee/employee-relative/{id}', 'EmployeeRelativeDetailController@indexRelative');
+Route::post('/employee/save-relative/{id}', 'EmployeeRelativeDetailController@saveRelative');
+
+//Route::get('/employee/employee', '');
+
+/*
+|--------------------------------------------------------------------------
 | Position
 |--------------------------------------------------------------------------
 */

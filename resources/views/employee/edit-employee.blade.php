@@ -89,7 +89,7 @@
                                 <label for="birthday">Birthday</label>
                                 <input type="date" class="form-control @error('birthday') is-invalid @enderror"
                                     id="birthday" name="birthday" value="{{ $Employee->birthday }}">
-    
+
                                 @error('birthday')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -97,33 +97,80 @@
                                 @enderror
                             </div>
                             <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                <label for="contact_number">Contact Number</label>
-                                <input type="text" class="form-control @error('contact_number') is-invalid @enderror"
-                                    id="contact_number" name="contact_number" value="{{ $Employee->contact_number }}">
-    
-                                @error('contact_number')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div> 
-                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <label for="gender">Gender</label>
                                 <select class="form-control @error('gender') is-invalid @enderror" id="gender"
-                                name="gender">
+                                    name="gender">
                                     <option value="">SELECT</option>
-                                    <option value="female" @if($Employee->gender == 'female') selected
-                                        @endif>FEMALE</option>
-                                    <option value="male" @if($Employee->gender == 'male') selected
-                                        @endif>MALE</option>
+                                    <option value="female" @if($Employee->gender =='female' ) selected @endif>FEMALE
+                                    </option>
+                                    <option value="male" @if($Employee->gender =='male' ) selected @endif>MALE</option>
                                 </select>
-    
+
                                 @error('gender')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                            </div>                                                                                   
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <label for="civil_status">Civil Status</label>
+                                <select class="form-control @error('civil_status') is-invalid @enderror" id="civil_status"
+                                    name="civil_status">
+                                    <option value="">SELECT</option>
+                                    <option value="single" @if($Employee->civil_status=='single' ) selected @endif>SINGLE</option>
+                                    <option value="married" @if($Employee->civil_status=='married' ) selected @endif>MARRIED</option>
+                                    <option value="widowed" @if($Employee->civil_status=='widowed' ) selected @endif>WIDOWED</option>
+                                    <option value="separated" @if($Employee->civil_status=='separated' ) selected @endif>SEPARATED</option>
+                                </select>
+
+                                @error('civil_status')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <label for="email_address">Email Address</label>
+                                <input type="email" class="form-control @error('email_address') is-invalid @enderror"
+                                    id="email_address" name="email_address" value="{{ $Employee->email_address }}">
+
+                                @error('email_address')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <label for="telephone_number">Telephone Number</label>
+                                <input type="text" class="form-control @error('telephone_number') is-invalid @enderror"
+                                    id="telephone_number" name="telephone_number" value="{{ $Employee->telephone_number }}">
+
+                                @error('telephone_number')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <label for="contact_number">Mobile Number</label>
+                                <input type="text" class="form-control @error('contact_number') is-invalid @enderror"
+                                    id="contact_number" name="contact_number" value="{{ $Employee->contact_number }}">
+
+                                @error('contact_number')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+
+                                @error('gender')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -250,31 +297,7 @@
                                 </span>
                                 @enderror
                             </div>                                                                                   
-                        </div>  
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label>Person to contact in case of emergency:</label>
-                            </div>
-                        </div>   
-                        <div class="row">
-                            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <label for="ptc_name">Name</label>
-                                <input type="text" class="form-control @error('ptc_name') is-invalid @enderror"
-                                    id="ptc_name" name="ptc_name" value="{{ $Employee->ptc_name }}">
-                            </div>
-                            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <label for="ptc_number">Contact Number</label>
-                                <input type="text" class="form-control @error('ptc_number') is-invalid @enderror"
-                                    id="ptc_number" name="ptc_number" value="{{ $Employee->ptc_number }}">
-                            </div>
-                        </div> 
-                        <div class="row">
-                            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <label for="ptc_address">Address</label>
-                                <input type="text" class="form-control @error('ptc_address') is-invalid @enderror"
-                                    id="ptc_address" name="ptc_address" value="{{ $Employee->ptc_address }}">
-                            </div>
-                        </div>                                                                    
+                        </div>                                                                     
                         <button type="submit" class="btn btn-success">Submit</button>
                     </form>
                 </div>
