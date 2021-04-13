@@ -720,10 +720,8 @@ class EmployeeController extends Controller
                                 ->orderBy('date_from', 'desc')
 
                                 ->where('employee_id', '=', $id)
-                                
-                                ->where('date_from', '>=', '2021-01-01')
 
-                                ->where('date_to', '>=', '2021-01-01')
+                                ->where('category', '!=', 'deleted')
 
 								->select(
 

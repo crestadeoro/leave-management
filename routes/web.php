@@ -43,7 +43,12 @@ Route::post('/employee/payroll/save-payroll-detail/{id}', 'EmployeeController@sa
 Route::get('/employee/employee-relative/{id}', 'EmployeeRelativeDetailController@indexRelative');
 Route::post('/employee/save-relative/{id}', 'EmployeeRelativeDetailController@saveRelative');
 
-//Route::get('/employee/employee', '');
+/*
+|--------------------------------------------------------------------------
+| Employee Dependent Details
+|--------------------------------------------------------------------------
+*/
+Route::get('/employee/employee-dependent/{id}', 'EmployeeDependentDetailController@indexDependent');
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +82,7 @@ Route::get('/employee/leave/add-leave/{id}', 'LeaveController@indexLeave');
 Route::post('/employee/leave/save-leave/{id}', 'LeaveController@saveLeave');
 Route::get('/employee/leave/edit-leave/{id}', 'LeaveController@editLeave');
 Route::patch('/employee/leave/update-leave/{id}', 'LeaveController@updateLeave');
+Route::get('/employee/leave/delete-leave/{id}', 'LeaveController@deleteLeave');
 
 /*
 |--------------------------------------------------------------------------

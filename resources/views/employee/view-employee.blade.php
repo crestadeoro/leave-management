@@ -358,6 +358,10 @@
                                         class="btn btn-success btn-sm btn-circle" title="Edit Leave"><i
                                             class="fas fa-pencil-alt"></i></a>
 
+                                            <a href="/employee/leave/delete-leave/{{ $Leaves->id }}"
+                                                class="btn btn-danger btn-sm btn-circle" title="Edit Leave"><i
+                                                    class="fas fa-trash-alt"></i></a>
+
                                 </td>
 
                             </tr>
@@ -755,6 +759,75 @@
 
     </div>
 
+</div>
+
+<div class="row col-xs-12">
+    <!-- Employee Dependent Details -->
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+        <div class="card shadow mb-4">
+
+            <!-- Card Header -->
+
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+
+                <h6 class="m-0 font-weight-bold text-primary">Employee Dependent Information</h6>
+
+                <div class="dropdown no-arrow">
+
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                        aria-labelledby="dropdownMenuLink">
+
+                        <div class="dropdown-header">Action:</div>
+
+                        <a class="dropdown-item" href="/employee/employee-dependent/{{ $Employee->id }}">Add Dependent Details</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Card Body -->
+
+            <div class="card-body">
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Mother's Maiden Name:</label>
+
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Occupation:</label>
+
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 </div>
 
 

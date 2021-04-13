@@ -245,8 +245,6 @@ class LeaveController extends Controller
 
     */    
 
-
-
     public function getEmployeeLeave($id)
 
     {
@@ -256,6 +254,8 @@ class LeaveController extends Controller
                         ->join('employees', 'employees.id', '=', 'leaves.employee_id')
 
                         ->where('leaves.id', '=', $id)
+
+                        ->where('leaves.category', '!=', 'deleted')
 
                         ->select(
 
@@ -374,6 +374,15 @@ class LeaveController extends Controller
                                 
 
         return $LeaveSummary;
+
+    }
+
+    public function deleteLeave(Leave $id){
+        
+        Leave::where('id', $id->id)
+                ->update(['category' => 'deleted']);
+
+        return redirect()->action('EmployeeController@viewEmployee', $id->employee_id)->with('success', 'Employee Leave successfully deleted!');
 
     }
 
