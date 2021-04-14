@@ -49,6 +49,10 @@ Route::post('/employee/save-relative/{id}', 'EmployeeRelativeDetailController@sa
 |--------------------------------------------------------------------------
 */
 Route::get('/employee/employee-dependent/{id}', 'EmployeeDependentDetailController@indexDependent');
+Route::post('/employee/save-dependent/{id}', 'EmployeeDependentDetailController@saveDependent');\
+Route::get('/employee/edit-dependent/{id}', 'EmployeeDependentDetailController@editDependent');
+Route::post('/employee/update-dependent/{id}', 'EmployeeDependentDetailController@updateDependent');
+Route::get('/employee/delete-dependent/{id}', 'EmployeeDependentDetailController@deleteDependent');
 
 /*
 |--------------------------------------------------------------------------

@@ -274,6 +274,8 @@ class EmployeeController extends Controller
         
         $Relative = $this->getRelativeDetail($id->id);
 
+        $Dependent = $this->getDependentDetail($id->id);
+
         if($Relative == null)
         {
             $MotherMaidenName = "";
@@ -329,7 +331,9 @@ class EmployeeController extends Controller
 
             'SpouseOccupation' => $SpouseOccupation,
 
-            'SpouseCompany' => $SpouseCompany
+            'SpouseCompany' => $SpouseCompany,
+
+            'Dependents' => $Dependent
 
         ]);
 
@@ -737,8 +741,6 @@ class EmployeeController extends Controller
 
                                 ->get();
 
-                                
-
         return $Leave;
 
     }
@@ -864,7 +866,7 @@ class EmployeeController extends Controller
 
     |--------------------------------------------------------------------------
 
-    | Fetch Employee Detail From Database
+    | Fetch Employee Relative Detail From Database
 
     |--------------------------------------------------------------------------
 
@@ -889,6 +891,32 @@ class EmployeeController extends Controller
                         ->first();
 
         return $Relative;
+    }
+
+    /*
+
+    |--------------------------------------------------------------------------
+
+    | Fetch Employee Dependent Detail From Database
+
+    |--------------------------------------------------------------------------
+
+    */
+
+    public function getDependentDetail($id)
+    {
+            $Dependent = DB::table('employee_dependent_details')
+            ->where('employee_id', '=', $id)
+            ->where('is_active', '!=', 'deleted')
+            ->select
+            (
+                'id',
+                'dependent_name',
+                'dependent_birthdate'
+            )
+            ->get();
+
+        return $Dependent;
     }
 }
 

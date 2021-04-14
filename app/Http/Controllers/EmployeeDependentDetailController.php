@@ -3,83 +3,122 @@
 namespace App\Http\Controllers;
 
 use App\EmployeeDependentDetail;
+use App\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeDependentDetailController extends Controller
 {
     /**
-     * Display a listing of the resource.
+
+     * Create a new controller instance.
+
      *
-     * @return \Illuminate\Http\Response
+
+     * @return void
+
      */
-    public function index()
+
+    public function __construct()
+
     {
-        //
+
+        $this->middleware('auth');
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    /*
+    |--------------------------------------------------------------------------
+    |
+    | Add Dependent Page
+    | 
+    |--------------------------------------------------------------------------
+    */
+
+    public function indexDependent(Employee $id)
     {
-        //
+        return view('/employee/employee-dependent', [
+            'id' => $id->id
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    /*
+    |--------------------------------------------------------------------------
+    |
+    | Save Dependent Page
+    | 
+    |--------------------------------------------------------------------------
+    */
+
+    public function saveDependent(Employee $id)
     {
-        //
+        request()->validate([
+            'dependent_name'        => 'required',
+            'dependent_birthdate'   =>  'required'
+        ]);
+
+        $name = request('dependent_name');
+        $birthdate = request('dependent_birthdate'); 
+
+        DB::insert('insert into employee_dependent_details (employee_id, dependent_name, dependent_birthdate) values (?, ?, ?)', [$id->id, $name, $birthdate]);
+
+        return redirect()->action('EmployeeController@viewEmployee', $id->id)->with('success', 'Employee Dependent Detail successfully updated!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\EmployeeDependentDetail  $employeeDependentDetail
-     * @return \Illuminate\Http\Response
-     */
-    public function show(EmployeeDependentDetail $employeeDependentDetail)
+    /*
+    |--------------------------------------------------------------------------
+    |
+    | Edit Dependent Page
+    | 
+    |--------------------------------------------------------------------------
+    */
+
+    public function editDependent(EmployeeDependentDetail $id)
     {
-        //
+        $dependent = EmployeeDependentDetail::where('id', $id->id)->first();
+
+        return view('/employee/edit-dependent', [
+            'dependent' => $dependent
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\EmployeeDependentDetail  $employeeDependentDetail
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(EmployeeDependentDetail $employeeDependentDetail)
+    /*
+    |--------------------------------------------------------------------------
+    |
+    | Update Dependent Page
+    | 
+    |--------------------------------------------------------------------------
+    */
+
+    public function updateDependent(EmployeeDependentDetail $id)
     {
-        //
+        request()->validate([
+            'dependent_name'        => 'required',
+            'dependent_birthdate'   => 'required'
+        ]);
+
+        $id->update(request([
+            'dependent_name',
+            'dependent_birthdate'
+        ]));
+
+        return redirect()->action('EmployeeController@viewEmployee', $id->employee_id)->with('success', 'Employee Dependent Detail successfully updated!');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\EmployeeDependentDetail  $employeeDependentDetail
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, EmployeeDependentDetail $employeeDependentDetail)
-    {
-        //
-    }
+    /*
+    |--------------------------------------------------------------------------
+    |
+    | Delete Dependent Page
+    | 
+    |--------------------------------------------------------------------------
+    */
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\EmployeeDependentDetail  $employeeDependentDetail
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(EmployeeDependentDetail $employeeDependentDetail)
+    public function deleteDependent(EmployeeDependentDetail $id)
     {
-        //
+        EmployeeDependentDetail::where('id', $id->id)->update([
+            'is_active' => 'deleted'
+        ]);
+
+        return redirect()->action('EmployeeController@viewEmployee', $id->employee_id)->with('success', 'Employee Dependent Detail successfully deleted!');
     }
 }

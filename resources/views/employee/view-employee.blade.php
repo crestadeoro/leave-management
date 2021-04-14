@@ -61,7 +61,8 @@
 
                         <div class="dropdown-header">Action:</div>
 
-                        <a class="dropdown-item" href="/employee/edit-employee/{{ $Employee->id }}">Edit Basic Details</a>
+                        <a class="dropdown-item" href="/employee/edit-employee/{{ $Employee->id }}">Edit Basic
+                            Details</a>
 
                         <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
                             data-target="#statusModal">Update Status</a>
@@ -358,9 +359,9 @@
                                         class="btn btn-success btn-sm btn-circle" title="Edit Leave"><i
                                             class="fas fa-pencil-alt"></i></a>
 
-                                            <a href="/employee/leave/delete-leave/{{ $Leaves->id }}"
-                                                class="btn btn-danger btn-sm btn-circle" title="Edit Leave"><i
-                                                    class="fas fa-trash-alt"></i></a>
+                                    <a href="/employee/leave/delete-leave/{{ $Leaves->id }}"
+                                        class="btn btn-danger btn-sm btn-circle" title="Edit Leave"><i
+                                            class="fas fa-trash-alt"></i></a>
 
                                 </td>
 
@@ -410,7 +411,8 @@
 
                         <div class="dropdown-header">Action:</div>
 
-                        <a class="dropdown-item" href="/employee/employee-relative/{{ $Employee->id }}">Add/Edit Relative Details</a>
+                        <a class="dropdown-item" href="/employee/employee-relative/{{ $Employee->id }}">Add/Edit
+                            Relative Details</a>
 
                     </div>
 
@@ -787,7 +789,8 @@
 
                         <div class="dropdown-header">Action:</div>
 
-                        <a class="dropdown-item" href="/employee/employee-dependent/{{ $Employee->id }}">Add Dependent Details</a>
+                        <a class="dropdown-item" href="/employee/employee-dependent/{{ $Employee->id }}">Add Dependent
+                            Details</a>
 
                     </div>
 
@@ -799,14 +802,26 @@
 
             <div class="card-body">
 
+                @if ($Dependents != '[]')
+                @foreach ($Dependents as $Dependent)
                 <div class="row">
 
-                    <div class="col-md-12 col-xs-12">
+                    <div class="col-md-8 col-xs-8">
 
-                        <label>Mother's Maiden Name:</label>
+                        <label>Dependent Name:</label>
 
-                        <span></span>
+                        <span>{{ strtoupper($Dependent->dependent_name) }}</span>
 
+                    </div>
+
+                    <div class="col-md-4 col-xs-4">
+                        <a href="/employee/edit-dependent/{{ $Dependent->id }}"
+                            class="btn btn-warning btn-sm btn-circle" title="View Record"><i
+                                class="fas fa-edit"></i></a>
+
+                        <a href="/employee/delete-dependent/{{ $Dependent->id }}"
+                            class="btn btn-danger btn-sm btn-circle" title="View Record"><i
+                                class="fas fa-trash-alt"></i></a>
                     </div>
 
                 </div>
@@ -815,13 +830,17 @@
 
                     <div class="col-md-12 col-xs-12">
 
-                        <label>Occupation:</label>
+                        <label>Birthdate:</label>
 
-                        <span></span>
+                        <span>{{ date('F d, Y', strtotime($Dependent->dependent_birthdate)) }}</span>
 
                     </div>
 
                 </div>
+                @endforeach
+                @else
+                <!-- None -->
+                @endif
 
             </div>
 
