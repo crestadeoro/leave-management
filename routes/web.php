@@ -56,6 +56,14 @@ Route::get('/employee/delete-dependent/{id}', 'EmployeeDependentDetailController
 
 /*
 |--------------------------------------------------------------------------
+| Employee Person to Contact Details
+|--------------------------------------------------------------------------
+*/
+Route::get('/employee/add-contact/{id}', 'EmployeePersonContactController@addContact');
+Route::post('/employee/save-contact/{id}', 'EmployeePersonContactController@saveContact');
+
+/*
+|--------------------------------------------------------------------------
 | Position
 |--------------------------------------------------------------------------
 */

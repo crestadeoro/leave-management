@@ -16,6 +16,8 @@ use App\Position;
 
 use App\Division;
 
+use App\EmployeePersonContact;
+
 use Carbon\Carbon;
 
 
@@ -274,8 +276,12 @@ class EmployeeController extends Controller
         
         $Relative = $this->getRelativeDetail($id->id);
 
+
         $Dependent = $this->getDependentDetail($id->id);
 
+
+        $Contact = $this->getContactDetail($id->id);
+        
         if($Relative == null)
         {
             $MotherMaidenName = "";
@@ -303,6 +309,21 @@ class EmployeeController extends Controller
             $SpouseName = $Relative->spouse_name;
             $SpouseOccupation = $Relative->spouse_occupation;
             $SpouseCompany = $Relative->spouse_name_of_company;
+        }
+
+        if($Contact == null)
+        {
+            $contact_person = "";
+            $contact_number = "";
+            $address = "";
+            $relationship = "";
+        }
+        else
+        {
+            $contact_person = $Contact->contact_person;
+            $contact_number = $Contact->contact_number;
+            $address = $Contact->address;
+            $relationship = $Contact->relationship;
         }
 
         return view('employee/view-employee', [
@@ -333,7 +354,12 @@ class EmployeeController extends Controller
 
             'SpouseCompany' => $SpouseCompany,
 
-            'Dependents' => $Dependent
+            'Dependents' => $Dependent,
+
+            'contact_person'      => $contact_person,
+            'contact_number'      => $contact_number,
+            'address'      => $address,
+            'relationship'      => $relationship
 
         ]);
 
@@ -917,6 +943,14 @@ class EmployeeController extends Controller
             ->get();
 
         return $Dependent;
+    }
+
+    public function getContactDetail($id)
+    {
+        $Contact = EmployeePersonContact::where('employee_id', $id)
+                    ->first();
+
+        return $Contact;
     }
 }
 

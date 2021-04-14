@@ -64,6 +64,8 @@
                         <a class="dropdown-item" href="/employee/edit-employee/{{ $Employee->id }}">Edit Basic
                             Details</a>
 
+                        <a class="dropdown-item" href="/employee/add-contact/{{ $Employee->id }}">Add/Edit Person to Contact</a>
+
                         <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
                             data-target="#statusModal">Update Status</a>
 
@@ -252,6 +254,58 @@
                         <label>TIN:</label>
 
                         <span>{{ $Employee->tin }}</span>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <label>Person to contact in case of emergency:</label>
+                    </div> 
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Name:</label>
+
+                        <span>{{ strtoupper($contact_person) }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 col-xs-6">
+
+                        <label>Contact Number:</label>
+
+                        <span>{{ strtoupper($contact_number) }}</span>
+
+                    </div>
+
+                    <div class="col-md-6 col-xs-6">
+
+                        <label>Relationship:</label>
+
+                        <span>{{ strtoupper($relationship) }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Address:</label>
+
+                        <span>{{ strtoupper($address) }}</span>
 
                     </div>
 
