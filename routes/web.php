@@ -35,6 +35,9 @@ Route::get('/employee/update-status/{id}/{status}', 'EmployeeController@updateEm
 Route::get('/employee/payroll/add-payroll-detail/{id}', 'EmployeeController@addPayrollDetail');
 Route::post('/employee/payroll/save-payroll-detail/{id}', 'EmployeeController@savePayrollDetail');
 
+Route::get('/employee/edit-other/{id}', 'EmployeeController@editOther');
+Route::post('/employee/save-other/{id}', 'EmployeeController@saveOther');
+
 /*
 |--------------------------------------------------------------------------
 | Employee Relative Details

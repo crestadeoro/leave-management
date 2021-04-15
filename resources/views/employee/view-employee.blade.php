@@ -64,6 +64,8 @@
                         <a class="dropdown-item" href="/employee/edit-employee/{{ $Employee->id }}">Edit Basic
                             Details</a>
 
+                        <a class="dropdown-item" href="/employee/edit-other/{{ $Employee->id }}">Edit Other Details</a>
+
                         <a class="dropdown-item" href="/employee/add-contact/{{ $Employee->id }}">Add/Edit Person to Contact</a>
 
                         <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
@@ -306,6 +308,90 @@
                         <label>Address:</label>
 
                         <span>{{ strtoupper($address) }}</span>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <label>Employee Other Details:</label>
+                    </div> 
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Place of Birth:</label>
+
+                        <span>{{ strtoupper($Employee->place_of_birth) }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Citizenship:</label>
+
+                        <span>{{ strtoupper($Employee->citizenship) }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Religion:</label>
+
+                        <span>{{ strtoupper($Employee->religion) }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 col-xs-6">
+
+                        <label>Height:</label>
+
+                        <span>{{ $Employee->height }}</span>
+
+                    </div>
+
+                    <div class="col-md-6 col-xs-6">
+
+                        <label>Weight:</label>
+
+                        <span>{{ $Employee->weight }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 col-xs-6">
+
+                        <label>Blood Type:</label>
+
+                        <span>{{ strtoupper($Employee->blood_type) }}</span>
+
+                    </div>
+
+                    <div class="col-md-6 col-xs-6">
+
+                        <label>Hair Color:</label>
+
+                        <span>{{ strtoupper($Employee->hair_color) }}</span>
 
                     </div>
 

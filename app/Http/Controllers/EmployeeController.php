@@ -694,6 +694,20 @@ class EmployeeController extends Controller
                                     'employees.hdmf',
 
                                     'employees.tin',
+                                    
+                                    'employees.place_of_birth',
+
+                                    'employees.citizenship',
+
+                                    'employees.religion',
+
+                                    'employees.height',
+
+                                    'employees.weight',
+
+                                    'employees.blood_type',
+
+                                    'employees.hair_color',
 
                                     'employees.status',
 
@@ -945,12 +959,94 @@ class EmployeeController extends Controller
         return $Dependent;
     }
 
+    /*
+
+    |--------------------------------------------------------------------------
+
+    | Fetch Person to contact detail
+
+    |--------------------------------------------------------------------------
+
+    */
+
     public function getContactDetail($id)
     {
         $Contact = EmployeePersonContact::where('employee_id', $id)
                     ->first();
 
         return $Contact;
+    }
+
+    /*
+
+    |--------------------------------------------------------------------------
+
+    | Edit Other Detail Page
+
+    |--------------------------------------------------------------------------
+
+    */
+
+    public function editOther(Employee $id)
+    {
+        $other = $this->getOtherDetails($id->id);
+        
+        return view('/employee/edit-other', [
+            'id' => $id->id,
+            'other' => $other
+        ]);
+    }
+
+    /*
+
+    |--------------------------------------------------------------------------
+
+    | Fetch Other Detail
+
+    |--------------------------------------------------------------------------
+
+    */
+
+    public function getOtherDetails($id)
+    {
+        $other = Employee::where('id', $id)
+                            ->select(
+                                'place_of_birth',
+                                'citizenship',
+                                'religion',
+                                'height',
+                                'weight',
+                                'blood_type',
+                                'hair_color'
+                            )
+                            ->first();
+
+        return $other;
+    }
+
+    /*
+
+    |--------------------------------------------------------------------------
+
+    | Save Other Detail
+
+    |--------------------------------------------------------------------------
+
+    */
+
+    public function saveOther(Employee $id)
+    {
+        $id->update(request([
+            'place_of_birth',
+            'citizenship',
+            'religion',
+            'height',
+            'weight',
+            'blood_type',
+            'hair_color'
+        ]));
+
+        return redirect()->action('EmployeeController@viewEmployee', $id->id)->with('success', 'Employee Other Detail successfully updated!');
     }
 }
 
