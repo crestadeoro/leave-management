@@ -33,11 +33,11 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
-                <div class="sidebar-brand-text mx-3">Leave Management</div>
+                <div class="sidebar-brand-text mx-3">Human Resouce Information System</div>
             </a>
 
             <!-- Divider -->
@@ -47,7 +47,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/home">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>GoldridgeCDC</span></a>
+                    <span>Cresta De Oro</span></a>
             </li>
 
             <!-- Divider -->
@@ -105,7 +105,7 @@
                 <div id="collapseReport" class="collapse @if(stripos(Request::path(), 'report') !== FALSE) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item @if(Request::path() == 'report/master-list') active @endif" href="/report/master-list">Employee</a>
-                        <a class="collapse-item @if(Request::path() == 'report/leave') active @endif" href="/report/leave">Leave</a>
+                        <a class="collapse-item" href="#">Leave</a>
                     </div>
                 </div>
             </li>

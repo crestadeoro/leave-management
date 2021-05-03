@@ -56,11 +56,11 @@
                                 <td>{{ date('F d, Y', strtotime($Employees->date_hired)) }}</td>
                                 <td>{{ strtoupper($Employees->status) }}</td>
                                 <td>{{ date('F d, Y', strtotime($Employees->birthday)) }}</td>
-                                <td>{{ strtoupper($Employees->address) }}</td>
                                 <td>{{ strtoupper($Employees->sss) }}</td>
                                 <td>{{ strtoupper($Employees->philhealth) }}</td>
                                 <td>{{ strtoupper($Employees->hdmf) }}</td>
                                 <td>{{ strtoupper($Employees->tin) }}</td>
+                                <td>{{ strtoupper($Employees->address) }}</td>
                             </tr>
                             @endforeach
                         </tbody>

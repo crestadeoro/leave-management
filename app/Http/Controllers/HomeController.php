@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Employee;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,32 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $employee = $this->getBirthday();
+
+        return view('home', [
+            'employee' => $employee
+        ]);
+    }
+
+    public function getBirthday()
+    {
+		$employee = DB::table('employees')
+
+								->join('divisions', 'employees.division', '=', 'divisions.id')
+
+								->select(
+
+                                    'employees.firstname',
+
+                                    'employees.lastname',
+
+                                    'employees.birthday',
+
+                                    'divisions.division'
+								)
+
+                                ->get();
+
+        return $employee;
     }
 }
