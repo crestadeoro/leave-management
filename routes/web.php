@@ -67,6 +67,18 @@ Route::post('/employee/save-contact/{id}', 'EmployeePersonContactController@save
 
 /*
 |--------------------------------------------------------------------------
+| Employee Educational Background Details
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/employee/employee-education/{id}', 'EmployeeEducationalBackgroundController@addEducation');
+Route::post('/employee/save-education/{id}', 'EmployeeEducationalBackgroundController@saveEducation');
+Route::get('/employee/edit-education/{id}', 'EmployeeEducationalBackgroundController@editEducation');
+Route::patch('/employee/update-education/{id}', 'EmployeeEducationalBackgroundController@updateEducation');
+Route::get('/employee/delete-education/{id}', 'EmployeeEducationalBackgroundController@deleteEducation');
+
+/*
+|--------------------------------------------------------------------------
 | Position
 |--------------------------------------------------------------------------
 */

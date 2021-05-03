@@ -225,7 +225,7 @@
 
                     <div class="col-md-6 col-xs-6">
 
-                        <label>SSS:</label>
+                        <label class="text-info">SSS:</label>
 
                         <span>{{ $Employee->sss }}</span>
 
@@ -233,7 +233,7 @@
 
                     <div class="col-md-6 col-xs-6">
 
-                        <label>PhilHealth:</label>
+                        <label class="text-info">PhilHealth:</label>
 
                         <span>{{ $Employee->philhealth }}</span>
 
@@ -245,7 +245,7 @@
 
                     <div class="col-md-6 col-xs-6">
 
-                        <label>HDMF:</label>
+                        <label class="text-info">HDMF:</label>
 
                         <span>{{ $Employee->hdmf }}</span>
 
@@ -253,7 +253,7 @@
 
                     <div class="col-md-6 col-xs-6">
 
-                        <label>TIN:</label>
+                        <label class="text-info">TIN:</label>
 
                         <span>{{ $Employee->tin }}</span>
 
@@ -273,7 +273,7 @@
 
                     <div class="col-md-12 col-xs-12">
 
-                        <label>Name:</label>
+                        <label class="text-success">Name:</label>
 
                         <span>{{ strtoupper($contact_person) }}</span>
 
@@ -285,7 +285,7 @@
 
                     <div class="col-md-6 col-xs-6">
 
-                        <label>Contact Number:</label>
+                        <label class="text-success">Contact Number:</label>
 
                         <span>{{ strtoupper($contact_number) }}</span>
 
@@ -293,7 +293,7 @@
 
                     <div class="col-md-6 col-xs-6">
 
-                        <label>Relationship:</label>
+                        <label class="text-success">Relationship:</label>
 
                         <span>{{ strtoupper($relationship) }}</span>
 
@@ -305,7 +305,7 @@
 
                     <div class="col-md-12 col-xs-12">
 
-                        <label>Address:</label>
+                        <label class="text-success">Address:</label>
 
                         <span>{{ strtoupper($address) }}</span>
 
@@ -325,7 +325,7 @@
 
                     <div class="col-md-12 col-xs-12">
 
-                        <label>Place of Birth:</label>
+                        <label class="text-primary">Place of Birth:</label>
 
                         <span>{{ strtoupper($Employee->place_of_birth) }}</span>
 
@@ -337,7 +337,7 @@
 
                     <div class="col-md-12 col-xs-12">
 
-                        <label>Citizenship:</label>
+                        <label class="text-primary">Citizenship:</label>
 
                         <span>{{ strtoupper($Employee->citizenship) }}</span>
 
@@ -349,7 +349,7 @@
 
                     <div class="col-md-12 col-xs-12">
 
-                        <label>Religion:</label>
+                        <label class="text-primary">Religion:</label>
 
                         <span>{{ strtoupper($Employee->religion) }}</span>
 
@@ -361,7 +361,7 @@
 
                     <div class="col-md-6 col-xs-6">
 
-                        <label>Height:</label>
+                        <label class="text-primary">Height:</label>
 
                         <span>{{ $Employee->height }}</span>
 
@@ -369,7 +369,7 @@
 
                     <div class="col-md-6 col-xs-6">
 
-                        <label>Weight:</label>
+                        <label class="text-primary">Weight:</label>
 
                         <span>{{ $Employee->weight }}</span>
 
@@ -381,7 +381,7 @@
 
                     <div class="col-md-6 col-xs-6">
 
-                        <label>Blood Type:</label>
+                        <label class="text-primary">Blood Type:</label>
 
                         <span>{{ strtoupper($Employee->blood_type) }}</span>
 
@@ -389,7 +389,7 @@
 
                     <div class="col-md-6 col-xs-6">
 
-                        <label>Hair Color:</label>
+                        <label class="text-primary">Hair Color:</label>
 
                         <span>{{ strtoupper($Employee->hair_color) }}</span>
 
@@ -404,6 +404,141 @@
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+    	        <div class="card shadow mb-4">
+
+            <!-- Card Header -->
+
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+
+                <h6 class="m-0 font-weight-bold text-primary">Payroll Detail</h6>
+
+                <div class="dropdown no-arrow">
+
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                        aria-labelledby="dropdownMenuLink">
+
+                        <div class="dropdown-header">Action:</div>
+
+                        <a class="dropdown-item" href="/employee/payroll/add-payroll-detail/{{ $Employee->id }}">Updte
+                            Payroll Detail</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Card Body -->
+
+            <div class="card-body">
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Bank Name:</label>
+
+                        <span>{{ $Employee->bank_name }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Bank Account:</label>
+
+                        <span>{{ $Employee->bank_account }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Basic Rate:</label>
+
+                        <span>{{ number_format($Employee->basic_rate, 2) }}</span>
+
+                    </div>
+
+                </div>
+
+               	<div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Daily Rate:</label>
+
+                        <span>{{ number_format(($Employee->basic_rate * 12)/313, 2) }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>RATA:</label>
+
+                        <span>{{ number_format($Employee->rata, 2) }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>PERA:</label>
+
+                        <span>{{ number_format($Employee->pera, 2) }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Meal Allowance:</label>
+
+                        <span>{{ number_format($Employee->meal_allowance, 2) }}</span>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Project Allowance:</label>
+
+                        <span>{{ number_format($Employee->project_allowance, 2) }}</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
         <div class="card shadow mb-4">
 
@@ -502,6 +637,92 @@
                                     <a href="/employee/leave/delete-leave/{{ $Leaves->id }}"
                                         class="btn btn-danger btn-sm btn-circle" title="Edit Leave"><i
                                             class="fas fa-trash-alt"></i></a>
+
+                                </td>
+
+                            </tr>
+
+                            @endforeach
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+                <div class="card shadow mb-4">
+
+            <!-- Card Header -->
+
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+
+                <h6 class="m-0 font-weight-bold text-primary">Issued PPE</h6>
+
+                <div class="dropdown no-arrow">
+
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                        aria-labelledby="dropdownMenuLink">
+
+                        <div class="dropdown-header">Action:</div>
+
+                        <a class="dropdown-item" href="/employee/ppe/add-ppe/{{ $Employee->id }}">Add PPE</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Card Body -->
+
+            <div class="card-body">
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Quantity</th>
+
+                                <th>Item</th>
+
+                                <th>Date Issued</th>
+
+                                <th>Action</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            @foreach($Ppe as $Ppes)
+
+                            <tr>
+
+                                <td>{{ $Ppes->quantity }}</td>
+
+                                <td>{{ strtoupper($Ppes->item) }}</td>
+
+                                <td>{{ date('F d, Y', strtotime($Ppes->date_issued)) }}</td>
+
+                                <td><a href="/employee/ppe/edit-ppe/{{ $Ppes->id }}"
+                                        class="btn btn-success btn-sm btn-circle" title="Edit PPE"><i
+                                            class="fas fa-pencil-alt"></i></a>
 
                                 </td>
 
@@ -682,225 +903,6 @@
 
     </div>
 
-    <!-- Payroll Detail -->
-
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" hidden>
-
-        <div class="card shadow mb-4">
-
-            <!-- Card Header -->
-
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-
-                <h6 class="m-0 font-weight-bold text-primary">Payroll Detail</h6>
-
-                <div class="dropdown no-arrow">
-
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                        aria-labelledby="dropdownMenuLink">
-
-                        <div class="dropdown-header">Action:</div>
-
-                        <a class="dropdown-item" href="/employee/payroll/add-payroll-detail/{{ $Employee->id }}">Updte
-                            Payroll Detail</a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- Card Body -->
-
-            <div class="card-body">
-
-                <div class="row">
-
-                    <div class="col-md-12 col-xs-12">
-
-                        <label>Bank Name:</label>
-
-                        <span>{{ $Employee->bank_name }}</span>
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-12 col-xs-12">
-
-                        <label>Bank Account:</label>
-
-                        <span>{{ $Employee->bank_account }}</span>
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-12 col-xs-12">
-
-                        <label>Basic Rate:</label>
-
-                        <span>{{ number_format($Employee->basic_rate, 2) }}</span>
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-12 col-xs-12">
-
-                        <label>RATA:</label>
-
-                        <span>{{ number_format($Employee->rata, 2) }}</span>
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-12 col-xs-12">
-
-                        <label>PERA:</label>
-
-                        <span>{{ number_format($Employee->pera, 2) }}</span>
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-12 col-xs-12">
-
-                        <label>Meal Allowance:</label>
-
-                        <span>{{ number_format($Employee->meal_allowance, 2) }}</span>
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-12 col-xs-12">
-
-                        <label>Project Allowance:</label>
-
-                        <span>{{ number_format($Employee->project_allowance, 2) }}</span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" hidden>
-
-        <div class="card shadow mb-4">
-
-            <!-- Card Header -->
-
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-
-                <h6 class="m-0 font-weight-bold text-primary">Issued PPE</h6>
-
-                <div class="dropdown no-arrow">
-
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                        aria-labelledby="dropdownMenuLink">
-
-                        <div class="dropdown-header">Action:</div>
-
-                        <a class="dropdown-item" href="/employee/ppe/add-ppe/{{ $Employee->id }}">Add PPE</a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- Card Body -->
-
-            <div class="card-body">
-
-                <div class="table-responsive">
-
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-
-                        <thead>
-
-                            <tr>
-
-                                <th>Quantity</th>
-
-                                <th>Item</th>
-
-                                <th>Date Issued</th>
-
-                                <th>Action</th>
-
-                            </tr>
-
-                        </thead>
-
-                        <tbody>
-
-                            @foreach($Ppe as $Ppes)
-
-                            <tr>
-
-                                <td>{{ $Ppes->quantity }}</td>
-
-                                <td>{{ strtoupper($Ppes->item) }}</td>
-
-                                <td>{{ date('F d, Y', strtotime($Ppes->date_issued)) }}</td>
-
-                                <td><a href="/employee/ppe/edit-ppe/{{ $Ppes->id }}"
-                                        class="btn btn-success btn-sm btn-circle" title="Edit PPE"><i
-                                            class="fas fa-pencil-alt"></i></a>
-
-                                </td>
-
-                            </tr>
-
-                            @endforeach
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
 </div>
 
 <div class="row col-xs-12">
@@ -973,6 +975,91 @@
                         <label>Birthdate:</label>
 
                         <span>{{ date('F d, Y', strtotime($Dependent->dependent_birthdate)) }}</span>
+
+                    </div>
+
+                </div>
+                @endforeach
+                @else
+                <!-- None -->
+                @endif
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="row col-xs-12">
+    <!-- Employee Educational Background Details -->
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+        <div class="card shadow mb-4">
+
+            <!-- Card Header -->
+
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+
+                <h6 class="m-0 font-weight-bold text-primary">Employee Educational Background Information</h6>
+
+                <div class="dropdown no-arrow">
+
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                        aria-labelledby="dropdownMenuLink">
+
+                        <div class="dropdown-header">Action:</div>
+
+                        <a class="dropdown-item" href="/employee/employee-education/{{ $Employee->id }}">Add Educational Background</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Card Body -->
+
+            <div class="card-body">
+
+                @if ($educations != '[]')
+                @foreach ($educations as $education)
+                <div class="row">
+
+                    <div class="col-md-10 col-xs-10">
+
+                        <label>School Name:</label>
+
+                        <span>{{ strtoupper($education->school_name) }}</span>
+
+                    </div>
+
+                    <div class="col-md-2 col-xs-2">
+                        <a href="/employee/edit-education/{{ $education->id }}"
+                            class="btn btn-warning btn-sm btn-circle" title="View Record"><i
+                                class="fas fa-edit"></i></a>
+
+                        <a href="/employee/delete-education/{{ $education->id }}"
+                            class="btn btn-danger btn-sm btn-circle" title="View Record"><i
+                                class="fas fa-trash-alt"></i></a>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12 col-xs-12">
+
+                        <label>Degree:</label>
+
+                        <span>{{ strtoupper($education->degree) }}</span>
 
                     </div>
 

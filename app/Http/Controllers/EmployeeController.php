@@ -18,6 +18,8 @@ use App\Division;
 
 use App\EmployeePersonContact;
 
+use App\EmployeeEducationalBackground;
+
 use Carbon\Carbon;
 
 
@@ -281,6 +283,8 @@ class EmployeeController extends Controller
 
 
         $Contact = $this->getContactDetail($id->id);
+
+        $Education = $this->getEducationDetail($id->id);
         
         if($Relative == null)
         {
@@ -357,10 +361,14 @@ class EmployeeController extends Controller
             'Dependents' => $Dependent,
 
             'contact_person'      => $contact_person,
-            'contact_number'      => $contact_number,
-            'address'      => $address,
-            'relationship'      => $relationship
 
+            'contact_number'      => $contact_number,
+
+            'address'      => $address,
+
+            'relationship'      => $relationship,
+
+            'educations'     => $Education
         ]);
 
     }
@@ -1047,6 +1055,30 @@ class EmployeeController extends Controller
         ]));
 
         return redirect()->action('EmployeeController@viewEmployee', $id->id)->with('success', 'Employee Other Detail successfully updated!');
+    }
+
+    /*
+
+    |--------------------------------------------------------------------------
+
+    | Fetch Employee Educational Backround Detail
+
+    |--------------------------------------------------------------------------
+
+    */
+
+    public function getEducationDetail($id)
+    {
+        $Education = EmployeeEducationalBackground::where('employee_id', $id)
+                        ->where('is_active', '!=', 'deleted')
+                        ->select(
+                            'id',
+                            'school_name',
+                            'degree'
+                        )
+                        ->get();
+
+        return $Education;
     }
 }
 

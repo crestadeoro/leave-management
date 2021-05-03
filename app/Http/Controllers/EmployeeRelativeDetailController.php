@@ -44,14 +44,17 @@ class EmployeeRelativeDetailController extends Controller
             $MotherMaidenName = "";
             $MotherOccupation = "";
             $MotherCompany = "";
+            $MotherContactNumber = "";
             
             $FatherName = "";
             $FatherOccupation = "";
             $FatherCompany = "";
+            $FatherContactNumber = "";
 
             $SpouseName = "";
             $SpouseOccupation = "";
             $SpouseCompany = "";
+            $SpouseContactNumber = "";
         }
         else
         {
